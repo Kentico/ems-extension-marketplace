@@ -1,7 +1,11 @@
 <template>
   <div class="marketplace-item-list">
-    <div v-for="(item, index) in items" v-bind:key="`item.name-${index}`">
-      <MarketplaceItemDetail v-bind:item="item"/>
+    <div
+      class="marketplace-item-detail-container"
+      v-for="(item, index) in items"
+      v-bind:key="`item.name-${index}`"
+    >
+      <MarketplaceItemDetail v-bind:item="item" />
     </div>
   </div>
 </template>
@@ -17,8 +21,10 @@ import MarketplaceItem from "../models/marketplaceItem";
   }
 })
 export default class MarketplaceItemList extends Vue {
-  @Prop() private msg!: string;
-  private items: MarketplaceItem[] = new Array() as MarketplaceItem[];
+  @Prop()
+  private msg!: string;
+
+  private items: MarketplaceItem[] = new Array();
 
   created() {
     fetch(
@@ -37,7 +43,12 @@ export default class MarketplaceItemList extends Vue {
 <style scoped lang="scss">
 .marketplace-item-list {
   display: flex;
-  justify-content: space-between;
-  flex-flow: column wrap;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+}
+.marketplace-item-detail-container {
+  max-width: 310px;
+  min-width: 280px;
+  margin: 0 10px 18px 10px;
 }
 </style>
