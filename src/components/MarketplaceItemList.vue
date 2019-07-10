@@ -26,7 +26,7 @@ export default class MarketplaceItemList extends Vue {
 
   private items: MarketplaceItem[] = new Array();
 
-  created() {
+  beforeMount() {
     fetch(
       "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/manifest.json" +
         "?t=" +

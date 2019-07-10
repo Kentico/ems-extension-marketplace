@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <MarketplaceItemList />
+    <SubmitNewItem />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import MarketplaceItemList from "./components/MarketplaceItemList.vue";
+import SubmitNewItem from "./components/SubmitNewItem.vue";
 
 @Component({
   components: {
-    MarketplaceItemList
+    MarketplaceItemList,
+    SubmitNewItem
   }
 })
 export default class App extends Vue {}
