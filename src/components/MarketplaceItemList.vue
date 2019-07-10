@@ -1,22 +1,22 @@
 <template>
-  <div class="marketplace-list">
+  <div class="marketplace-item-list">
     <div v-for="(item, index) in items" v-bind:key="`item.name-${index}`">
-      <WidgetItem v-bind:item="item"/>
+      <MarketplaceItemDetail v-bind:item="item"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import WidgetItem from "./WidgetItem.vue";
+import MarketplaceItemDetail from "./MarketplaceItemDetail.vue";
 import MarketplaceItem from "../models/marketplaceItem";
 
 @Component({
   components: {
-    WidgetItem
+    MarketplaceItemDetail
   }
 })
-export default class WidgetList extends Vue {
+export default class MarketplaceItemList extends Vue {
   @Prop() private msg!: string;
   private items: MarketplaceItem[] = new Array() as MarketplaceItem[];
 
@@ -35,7 +35,7 @@ export default class WidgetList extends Vue {
 </script>
 
 <style scoped lang="scss">
-.marketplace-list {
+.marketplace-item-list {
   display: flex;
   justify-content: space-between;
   flex-flow: column wrap;

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <WidgetList />
+    <MarketplaceItemList />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import WidgetList from "./components/WidgetList.vue";
+import MarketplaceItemList from "./components/MarketplaceItemList.vue";
 
 @Component({
   components: {
-    WidgetList
+    MarketplaceItemList
   }
 })
 export default class App extends Vue {}

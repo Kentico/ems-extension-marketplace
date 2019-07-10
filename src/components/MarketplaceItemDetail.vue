@@ -32,7 +32,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItem from "../models/marketplaceItem";
 
 @Component
-export default class WidgetItem extends Vue {
+export default class MarketplaceItemDetail extends Vue {
   @Prop(MarketplaceItem) private readonly item!: MarketplaceItem;
 }
 </script>
