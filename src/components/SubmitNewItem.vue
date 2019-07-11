@@ -1,6 +1,11 @@
 <template>
   <div class="submit-new-item-section">
-    <p>Submit!</p>
+    <h4 class="submit-new-item-section__heading">Submit a New Item!</h4>
+    <p>
+      Submit a new extension without any certification to share it with the
+      Kentico community
+    </p>
+    <a href="kentico.com" class="btn">Submit a new item!</a>
   </div>
 </template>
 
@@ -14,14 +19,23 @@ export default class SubmitNewItem extends Vue {}
 </script>
 
 <style scoped lang="scss">
-.marketplace-item-list {
-  display: flex;
-  justify-content: space-evenly;
-  flex-flow: row wrap;
+.submit-new-item-section {
+  min-height: 165px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 14px;
+  padding: 0 20px;
+  background-color: #e3e3e3;
+  color: #696663;
 }
-.marketplace-item-detail-container {
-  max-width: 310px;
-  min-width: 280px;
-  margin: 0 10px 18px 10px;
+.submit-new-item-section__heading {
+  margin-top: 1em;
+  font-size: 16px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  display: inline-block;
+  width: 100%;
 }
 </style>

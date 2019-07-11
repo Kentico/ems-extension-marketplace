@@ -1,13 +1,15 @@
 <template>
-  <div class="marketplace-item-list">
+<div id="wrapper" style="height: 400px; overflow: auto;">
+  <div id="marketplace-item-list" class="marketplace-item-list">
     <div
       class="marketplace-item-detail-container"
-      v-for="(item, index) in items"
+      v-for="(item, index) in pagedItems"
       v-bind:key="`item.name-${index}`"
     >
-      <MarketplaceItemDetail v-bind:item="item" />
+      <MarketplaceItemDetail v-bind:item="item"/>
     </div>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -24,7 +26,10 @@ export default class MarketplaceItemList extends Vue {
   @Prop()
   private msg!: string;
 
-  private items: MarketplaceItem[] = new Array();
+  private readonly pageSize: number = 8;
+  private lastItemIndex: number = 0;
+  private allItems: MarketplaceItem[] = new Array();
+  private pagedItems: MarketplaceItem[] = new Array();
 
   beforeMount() {
     fetch(
@@ -33,9 +38,25 @@ export default class MarketplaceItemList extends Vue {
         new Date().valueOf()
     ).then(response => {
       return response.json().then(json => {
-        this.items = json as MarketplaceItem[];
+        this.allItems = json as MarketplaceItem[];
+        this.pagedItems = this.allItems.slice(0, this.pageSize);
+        this.lastItemIndex = this.pageSize - 1;
       });
     });
+  }
+
+  mounted() {
+    this.scroll();
+  }
+
+  scroll() {
+    window.onscroll = () => {
+      let wrapperElement = document.getElementById("wrapper");
+      let listingElement = document.getElementById("marketplace-item-list");
+      if(wrapperElement!.scrollTop + wrapperElement!.offsetHeight > listingElement!.offsetHeight) {
+        console.log('end of scroll');
+      }
+    };
   }
 }
 </script>
