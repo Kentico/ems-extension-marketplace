@@ -1,15 +1,13 @@
 <template>
-<div id="wrapper" style="height: 400px; overflow: auto;">
   <div id="marketplace-item-list" class="marketplace-item-list">
     <div
       class="marketplace-item-detail-container"
-      v-for="(item, index) in pagedItems"
+      v-for="(item, index) in itemsToShow"
       v-bind:key="`item.name-${index}`"
     >
-      <MarketplaceItemDetail v-bind:item="item"/>
+      <MarketplaceItemDetail v-bind:item="item" />
     </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -23,13 +21,19 @@ import MarketplaceItem from "../models/marketplaceItem";
   }
 })
 export default class MarketplaceItemList extends Vue {
-  @Prop()
-  private msg!: string;
+  private itemsToShowInternal: MarketplaceItem[] = new Array();
 
   private readonly pageSize: number = 8;
   private lastItemIndex: number = 0;
   private allItems: MarketplaceItem[] = new Array();
-  private pagedItems: MarketplaceItem[] = new Array();
+
+  get itemsToShow(): MarketplaceItem[] {
+    return this.itemsToShowInternal;
+  }
+
+  set itemsToShow(items: MarketplaceItem[]) {
+    this.itemsToShowInternal = items;
+  }
 
   beforeMount() {
     fetch(
@@ -39,7 +43,7 @@ export default class MarketplaceItemList extends Vue {
     ).then(response => {
       return response.json().then(json => {
         this.allItems = json as MarketplaceItem[];
-        this.pagedItems = this.allItems.slice(0, this.pageSize);
+        this.itemsToShow = this.allItems.slice(0, this.pageSize);
         this.lastItemIndex = this.pageSize - 1;
       });
     });
@@ -51,12 +55,25 @@ export default class MarketplaceItemList extends Vue {
 
   scroll() {
     window.onscroll = () => {
-      let wrapperElement = document.getElementById("wrapper");
       let listingElement = document.getElementById("marketplace-item-list");
-      if(wrapperElement!.scrollTop + wrapperElement!.offsetHeight > listingElement!.offsetHeight) {
-        console.log('end of scroll');
+      if (
+        document.documentElement.scrollTop +
+          document.documentElement.clientHeight >=
+        document.documentElement.scrollHeight
+      ) {
+        this.appendNextPage();
       }
     };
+  }
+
+  appendNextPage() {
+    this.itemsToShow = this.itemsToShow.concat(
+      this.allItems.slice(
+        this.lastItemIndex,
+        this.lastItemIndex + this.pageSize
+      )
+    );
+    this.lastItemIndex = this.lastItemIndex + this.pageSize;
   }
 }
 </script>
