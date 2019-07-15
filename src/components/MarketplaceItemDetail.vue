@@ -94,7 +94,7 @@ export default class MarketplaceItemDetail extends Vue {
 }
 .marketplace-item-content {
   padding: 12px 20px 12px 20px;
-  background-color: #f4f4f4;
+  background-color: #e3e3e3;
 }
 .marketplace-item-content__description {
   overflow: hidden;
@@ -120,7 +120,7 @@ export default class MarketplaceItemDetail extends Vue {
 }
 .marketplace-item-footer {
   height: 60px;
-  background-color: #f4f4f4;
+  background-color: #e3e3e3;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }

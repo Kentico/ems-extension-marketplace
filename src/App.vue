@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <MarketplaceItemList />
-    <SubmitNewItem />
+    <div class="marketplace">
+      <MarketplaceFilter />
+      <MarketplaceItemList />
+      <SubmitNewItem />
+    </div>
   </div>
 </template>
 
@@ -9,15 +12,23 @@
 import { Component, Vue } from "vue-property-decorator";
 import MarketplaceItemList from "./components/MarketplaceItemList.vue";
 import SubmitNewItem from "./components/SubmitNewItem.vue";
+import MarketplaceFilter from "./components/MarketplaceFilter.vue";
 
 @Component({
   components: {
     MarketplaceItemList,
+    MarketplaceFilter,
     SubmitNewItem
   }
 })
 export default class App extends Vue {}
 </script>
+
+<style scoped lang="scss">
+.marketplace {
+  background-color: #f4f4f4;
+}
+</style>
 
 <style lang="scss">
 #app {
@@ -26,7 +37,6 @@ export default class App extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .btn {
   text-decoration: none;

@@ -58,7 +58,8 @@ export default class MarketplaceItemList extends Vue {
       let listingElement = document.getElementById("marketplace-item-list");
       if (
         document.documentElement.scrollTop +
-          document.documentElement.clientHeight >=
+          document.documentElement.clientHeight +
+          1 >=
         document.documentElement.scrollHeight
       ) {
         this.appendNextPage();
