@@ -14,6 +14,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemDetail from "./MarketplaceItemDetail.vue";
 import MarketplaceItem from "../models/marketplaceItem";
+import store from "@/store";
 
 @Component({
   components: {
@@ -21,19 +22,19 @@ import MarketplaceItem from "../models/marketplaceItem";
   }
 })
 export default class MarketplaceItemList extends Vue {
-  private itemsToShowInternal: MarketplaceItem[] = new Array();
+  // private itemsToShowInternal: Array<MarketplaceItem> = new Array();
 
-  private readonly pageSize: number = 8;
-  private lastItemIndex: number = 0;
-  private allItems: MarketplaceItem[] = new Array();
+  // private readonly pageSize: number = 8;
+  // private lastItemIndex: number = 0;
+  // private allItems: MarketplaceItem[] = new Array();
 
   get itemsToShow(): MarketplaceItem[] {
-    return this.itemsToShowInternal;
+    return store.getters.filteredItems;
   }
 
-  set itemsToShow(items: MarketplaceItem[]) {
-    this.itemsToShowInternal = items;
-  }
+  // set itemsToShow(items: MarketplaceItem[]) {
+  //   this.itemsToShowInternal = items;
+  // }
 
   beforeMount() {
     fetch(
@@ -42,9 +43,9 @@ export default class MarketplaceItemList extends Vue {
         new Date().valueOf()
     ).then(response => {
       return response.json().then(json => {
-        this.allItems = json as MarketplaceItem[];
-        this.itemsToShow = this.allItems.slice(0, this.pageSize);
-        this.lastItemIndex = this.pageSize - 1;
+        // this.allItems = json as MarketplaceItem[];
+        // this.itemsToShow = this.allItems.slice(0, this.pageSize);
+        // this.lastItemIndex = this.pageSize - 1;
         this.$store.commit("updateAllItems", json as MarketplaceItem[]);
         this.$store.commit("updateFilteredItems", json as MarketplaceItem[]);
       });
@@ -70,13 +71,13 @@ export default class MarketplaceItemList extends Vue {
   }
 
   appendNextPage() {
-    this.itemsToShow = this.itemsToShow.concat(
-      this.allItems.slice(
-        this.lastItemIndex,
-        this.lastItemIndex + this.pageSize
-      )
-    );
-    this.lastItemIndex = this.lastItemIndex + this.pageSize;
+    // this.itemsToShow = this.itemsToShow.concat(
+    //   this.allItems.slice(
+    //     this.lastItemIndex,
+    //     this.lastItemIndex + this.pageSize
+    //   )
+    // );
+    // this.lastItemIndex = this.lastItemIndex + this.pageSize;
   }
 }
 </script>

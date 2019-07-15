@@ -20,6 +20,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import MarketplaceItem from "../models/marketplaceItem";
+import store from "@/store";
 
 library.add(faSearch);
 
@@ -29,7 +30,13 @@ library.add(faSearch);
   }
 })
 export default class MarketplaceFilter extends Vue {
-  private searchPhrase: string = "";
+  get searchPhrase() {
+    return store.getters.filterSearchphrase;
+  }
+
+  set searchPhrase(newSearchPhrase: string) {
+    this.$store.commit("updateFilterSearchPhrase", newSearchPhrase);
+  }
 
   search() {
     const oldFilteredItems: Array<MarketplaceItem> = this.$store.getters

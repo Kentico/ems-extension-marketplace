@@ -1,4 +1,4 @@
-export default class MarketplaceItem {
+export default class MarketplaceItemModel {
   name: string;
   description: string;
   thumbnailUrl: string;
