@@ -1,7 +1,12 @@
 <template>
   <div class="marketplace-filter">
     <div class="marketplace-search">
-      <input type="text" class="marketplace-search__input" />
+      <input
+        v-model="searchPhrase"
+        v-on:keyup.enter="search"
+        type="text"
+        class="marketplace-search__input"
+      />
       <button class="marketplace-search__search-button" v-on:click="search">
         <font-awesome-icon icon="search" />
       </button>
@@ -14,6 +19,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import MarketplaceItem from "../models/marketplaceItem";
 
 library.add(faSearch);
 
@@ -23,8 +29,17 @@ library.add(faSearch);
   }
 })
 export default class MarketplaceFilter extends Vue {
+  private searchPhrase: string = "";
+
   search() {
-    alert(1);
+    const oldFilteredItems: Array<MarketplaceItem> = this.$store.getters
+      .filteredItems;
+    const filteredItems = oldFilteredItems.filter(item => {
+      item.name.includes(this.searchPhrase) ||
+        item.description.includes(this.searchPhrase) ||
+        item.source.includes(this.searchPhrase);
+    });
+    this.$store.commit("updateFilteredItems", filteredItems);
   }
 }
 </script>

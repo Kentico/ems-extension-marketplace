@@ -45,6 +45,8 @@ export default class MarketplaceItemList extends Vue {
         this.allItems = json as MarketplaceItem[];
         this.itemsToShow = this.allItems.slice(0, this.pageSize);
         this.lastItemIndex = this.pageSize - 1;
+        this.$store.commit("updateAllItems", json as MarketplaceItem[]);
+        this.$store.commit("updateFilteredItems", json as MarketplaceItem[]);
       });
     });
   }
