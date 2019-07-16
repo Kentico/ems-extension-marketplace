@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\"",
+    "watch": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\" --watch",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
