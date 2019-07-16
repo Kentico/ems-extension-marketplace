@@ -13,8 +13,11 @@ import { Component, Vue } from "vue-property-decorator";
 import MarketplaceItemList from "./components/MarketplaceItemList.vue";
 import SubmitNewItem from "./components/SubmitNewItem.vue";
 import MarketplaceFilter from "./components/MarketplaceFilter.vue";
+import store from "./store";
+
 
 @Component({
+  store,
   components: {
     MarketplaceItemList,
     MarketplaceFilter,
