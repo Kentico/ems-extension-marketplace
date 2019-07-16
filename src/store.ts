@@ -2,13 +2,19 @@ import Vue from "vue";
 import Vuex from "vuex";
 import MarketplaceItemModel from "./models/marketplaceItem";
 
+export const updateAllItemsMutation = 'updateAllItems';
+export const updateFilteredItemsMutation = 'updateFilteredItems';
+export const shownItemsMutation = 'shownItems';
+export const updateFilterPassphraseMutation = 'updateFilterPassphrase';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     data: {
       allItems: Array<MarketplaceItemModel>(),
-      filteredItems: Array<MarketplaceItemModel>()
+      filteredItems: Array<MarketplaceItemModel>(),
+      shownItems: Array<MarketplaceItemModel>(),
     },
     filter: {
       searchPhrase: ""
@@ -32,11 +38,12 @@ export default new Vuex.Store({
   },
   actions: {
     initItemsState(context, allItems) {
-      context.commit("updateAllItems", allItems);
-      context.commit("updateFilteredItems", allItems);
+      context.commit(updateAllItemsMutation, allItems);
+      context.commit(updateFilteredItemsMutation, allItems);
+      context.commit(shownItemsMutation, allItems);
     },
     updateFilterPassphrase(context, newSearchPhrase: string) {
-      context.commit("updateFilterPassphrase", newSearchPhrase);
+      context.commit(updateFilterPassphraseMutation, newSearchPhrase);
     }
   }
 });

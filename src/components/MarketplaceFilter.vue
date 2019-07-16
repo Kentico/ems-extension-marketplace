@@ -21,6 +21,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import MarketplaceItem from "../models/marketplaceItem";
 import store from "@/store";
+import filterItems from "../helpers/filterHelper";
 
 library.add(faSearch);
 
@@ -39,14 +40,7 @@ export default class MarketplaceFilter extends Vue {
   }
 
   search() {
-    const oldFilteredItems: Array<MarketplaceItem> = this.$store.getters
-      .filteredItems;
-    const filteredItems = oldFilteredItems.filter(item => {
-      item.name.includes(this.searchPhrase) ||
-        item.description.includes(this.searchPhrase) ||
-        item.source.includes(this.searchPhrase);
-    });
-    this.$store.commit("updateFilteredItems", filteredItems);
+    filterItems(this.searchPhrase);
   }
 }
 </script>

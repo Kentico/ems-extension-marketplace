@@ -14,7 +14,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemDetail from "./MarketplaceItemDetail.vue";
 import MarketplaceItem from "../models/marketplaceItem";
-import store from "@/store";
+import store, { updateAllItemsMutation, updateFilteredItemsMutation } from "@/store";
 
 @Component({
   components: {
@@ -46,8 +46,8 @@ export default class MarketplaceItemList extends Vue {
         // this.allItems = json as MarketplaceItem[];
         // this.itemsToShow = this.allItems.slice(0, this.pageSize);
         // this.lastItemIndex = this.pageSize - 1;
-        this.$store.commit("updateAllItems", json as MarketplaceItem[]);
-        this.$store.commit("updateFilteredItems", json as MarketplaceItem[]);
+        this.$store.commit(updateAllItemsMutation, json as MarketplaceItem[]);
+        this.$store.commit(updateFilteredItemsMutation, json as MarketplaceItem[]);
       });
     });
   }
