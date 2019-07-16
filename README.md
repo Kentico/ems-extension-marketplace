@@ -1,34 +1,45 @@
-# marketplace
+# Kentico EMS Extension Marketplace
 
-## Project setup
-```
-npm install
-```
+This repository is a source of the [Kentico EMS extension marketplace](devnet.kentico.com/marketplace).
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Getting started
 
-### Compiles and minifies for production
-```
-npm run build
-```
+* Install dependencies
+  
+  ```sh
+  npm install
+  ```
 
-### Run your tests
-```
-npm run test
-```
+* Run the marketplace
 
-### Lints and fixes files
-```
-npm run lint
-```
+  ```sh
+  npm run serve
+  ```
 
-### Run your unit tests
-```
-npm run test:unit
-```
+### *[Internal]* Develop on local [DevNet.Kentico.com](DevNet.Kentico.com) instance
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Install dependencies
+  
+  ```sh
+  npm install
+  ```
+
+* Set `--dest` value to the in [package.json](/package.json#L7) for `build` and `watch` script to the correct location according to your location of development version of kentico.
+
+* Compiles and hot-reloads for development to correct location
+
+  ```sh
+  npm run watch
+  ```
+
+  * Now it is possible to see the result of your changes on [devnet.kentico.com/marketplace](devnet.kentico.com/marketplace).
+
+* When you are done with the development, stop `watch` script and compile and minifies for production.
+
+  ```sh
+  npm run build
+  ```
+
+* Commit marketplace source code to this repository
+
+* Commit bundled file `extension-marketplace.min.js` located on the `--dest` build script parameter location to the [kentico.com](kentico.com) source code.
