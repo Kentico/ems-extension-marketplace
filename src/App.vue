@@ -16,6 +16,8 @@ import MarketplaceFilter from "./components/MarketplaceFilter.vue";
 import { initItemsStateAction } from "./store";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
 import store from "./store";
+import { initStoreWithTags } from "./utils/tags";
+import { initStoreWithItems } from "./utils/items";
 
 @Component({
   store,
@@ -34,7 +36,8 @@ export default class App extends Vue {
     ).then(response => {
       return response.json().then(json => {
         const allItems = json as MarketplaceItemModel[];
-        this.$store.dispatch(initItemsStateAction, allItems);
+        initStoreWithItems(allItems);
+        initStoreWithTags(allItems);
       });
     });
   }

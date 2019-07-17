@@ -7,6 +7,7 @@ import { resetPaging, addNextPage } from "./utils/pager";
 export const updateAllItemsMutation = "updateAllItems";
 export const updateFilteredItemsMutation = "updateFilteredItems";
 export const updateItemsToShowMutation = "updateItemsToShow";
+export const updateTagsCountMutation = "updateTagsCount";
 
 export const updateFilterPassphraseMutation = "updateFilterPassphrase";
 export const addNextPageInPagerListingMutation = "addNextPageInPagerListing";
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     data: {
       allItems: Array<MarketplaceItemModel>(),
       filteredItems: Array<MarketplaceItemModel>(),
-      itemsToShow: Array<MarketplaceItemModel>()
+      itemsToShow: Array<MarketplaceItemModel>(),
+      tagsCount: new Map<string, number>()
     },
     filter: {
       searchPhrase: ""
@@ -41,6 +43,9 @@ export default new Vuex.Store({
     updateItemsToShow(state, itemsToShow: Array<MarketplaceItemModel>) {
       state.data.itemsToShow = itemsToShow;
     },
+    updateTagsCount(state, tagsCount: Map<string, number>) {
+      state.data.tagsCount = tagsCount;
+    },
     updateFilterSearchPhrase(state, newSearchPhrase: string) {
       state.filter.searchPhrase = newSearchPhrase;
     },
@@ -52,6 +57,7 @@ export default new Vuex.Store({
     allItems: state => state.data.allItems,
     filteredItems: state => state.data.filteredItems,
     itemsToShow: state => state.data.itemsToShow,
+    tagsCount: state => state.data.tagsCount,
     filterSearchphrase: state => state.filter.searchPhrase,
     pagerLastItemIndex: state => state.pager.lastItemIndex
   },
