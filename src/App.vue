@@ -13,6 +13,8 @@ import { Component, Vue } from "vue-property-decorator";
 import MarketplaceItemList from "./components/MarketplaceItemList.vue";
 import SubmitNewItem from "./components/SubmitNewItem.vue";
 import MarketplaceFilter from "./components/MarketplaceFilter.vue";
+import { initItemsStateAction } from "./store";
+import MarketplaceItemModel from "./models/marketplaceItemModel";
 
 @Component({
   components: {
@@ -21,7 +23,20 @@ import MarketplaceFilter from "./components/MarketplaceFilter.vue";
     SubmitNewItem
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  beforeMount() {
+    fetch(
+      "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/manifest.json" +
+        "?t=" +
+        new Date().valueOf()
+    ).then(response => {
+      return response.json().then(json => {
+        const allItems = json as MarketplaceItemModel[];
+        this.$store.dispatch(initItemsStateAction, allItems);
+      });
+    });
+  }
+}
 </script>
 
 <style scoped lang="scss">

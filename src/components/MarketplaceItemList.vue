@@ -13,8 +13,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemDetail from "./MarketplaceItemDetail.vue";
-import MarketplaceItem from "../models/marketplaceItem";
-import store, { updateAllItemsMutation, updateFilteredItemsMutation } from "@/store";
+import store, {
+  updateAllItemsMutation,
+  updateFilteredItemsMutation,
+  addPageAction
+} from "@/store";
+import MarketplaceItemModel from "../models/marketplaceItemModel";
+import { addNextPage } from "../helpers/pager";
 
 @Component({
   components: {
@@ -22,34 +27,8 @@ import store, { updateAllItemsMutation, updateFilteredItemsMutation } from "@/st
   }
 })
 export default class MarketplaceItemList extends Vue {
-  // private itemsToShowInternal: Array<MarketplaceItem> = new Array();
-
-  // private readonly pageSize: number = 8;
-  // private lastItemIndex: number = 0;
-  // private allItems: MarketplaceItem[] = new Array();
-
-  get itemsToShow(): MarketplaceItem[] {
-    return store.getters.filteredItems;
-  }
-
-  // set itemsToShow(items: MarketplaceItem[]) {
-  //   this.itemsToShowInternal = items;
-  // }
-
-  beforeMount() {
-    fetch(
-      "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/manifest.json" +
-        "?t=" +
-        new Date().valueOf()
-    ).then(response => {
-      return response.json().then(json => {
-        // this.allItems = json as MarketplaceItem[];
-        // this.itemsToShow = this.allItems.slice(0, this.pageSize);
-        // this.lastItemIndex = this.pageSize - 1;
-        this.$store.commit(updateAllItemsMutation, json as MarketplaceItem[]);
-        this.$store.commit(updateFilteredItemsMutation, json as MarketplaceItem[]);
-      });
-    });
+  get itemsToShow(): MarketplaceItemModel[] {
+    return this.$store.getters.itemsToShow;
   }
 
   mounted() {
@@ -65,19 +44,9 @@ export default class MarketplaceItemList extends Vue {
           1 >=
         document.documentElement.scrollHeight
       ) {
-        this.appendNextPage();
+        this.$store.dispatch(addPageAction, {});
       }
     };
-  }
-
-  appendNextPage() {
-    // this.itemsToShow = this.itemsToShow.concat(
-    //   this.allItems.slice(
-    //     this.lastItemIndex,
-    //     this.lastItemIndex + this.pageSize
-    //   )
-    // );
-    // this.lastItemIndex = this.lastItemIndex + this.pageSize;
   }
 }
 </script>

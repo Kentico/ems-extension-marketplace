@@ -19,9 +19,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import MarketplaceItem from "../models/marketplaceItem";
 import store from "@/store";
-import filterItems from "../helpers/filterHelper";
+import filterItems from "../helpers/filter";
 
 library.add(faSearch);
 

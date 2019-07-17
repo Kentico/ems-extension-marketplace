@@ -33,12 +33,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import MarketplaceItem from "../models/marketplaceItem";
+import MarketplaceItemModel from "../models/marketplaceItemModel";
 
 @Component
 export default class MarketplaceItemDetail extends Vue {
   @Prop()
-  private readonly item!: MarketplaceItem;
+  private readonly item!: MarketplaceItemModel;
 
   get description(): string {
     return this.item.description.length <= 160
