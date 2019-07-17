@@ -1,12 +1,15 @@
 <template>
-  <div id="marketplace-item-list" class="marketplace-item-list">
-    <div
-      class="marketplace-item-detail-container"
-      v-for="(item, index) in itemsToShow"
-      v-bind:key="`item.name-${index}`"
-    >
-      <MarketplaceItemDetail v-bind:item="item" />
+  <div>
+    <div id="marketplace-item-list" class="marketplace-item-list">
+      <div
+        class="marketplace-item-detail-container"
+        v-for="(item, index) in itemsToShow"
+        v-bind:key="`item.name-${index}`"
+      >
+        <MarketplaceItemDetail v-bind:item="item" />
+      </div>
     </div>
+    <LoadMoreButton />
   </div>
 </template>
 
@@ -20,33 +23,17 @@ import store, {
 } from "@/store";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 import { addNextPage } from "../utils/pager";
+import LoadMoreButton from "./loadMoreButton.vue";
 
 @Component({
   components: {
-    MarketplaceItemDetail
+    MarketplaceItemDetail,
+    LoadMoreButton
   }
 })
 export default class MarketplaceItemList extends Vue {
   get itemsToShow(): MarketplaceItemModel[] {
     return this.$store.getters.itemsToShow;
-  }
-
-  mounted() {
-    this.scroll();
-  }
-
-  scroll() {
-    window.onscroll = () => {
-      let listingElement = document.getElementById("marketplace-item-list");
-      if (
-        document.documentElement.scrollTop +
-          document.documentElement.clientHeight +
-          1 >=
-        document.documentElement.scrollHeight
-      ) {
-        this.$store.dispatch(addPageAction, {});
-      }
-    };
   }
 }
 </script>
@@ -58,7 +45,7 @@ export default class MarketplaceItemList extends Vue {
   flex-flow: row wrap;
 }
 .marketplace-item-detail-container {
-  max-width: 310px;
+  max-width: 280px;
   min-width: 280px;
   margin: 0 10px 18px 10px;
 }

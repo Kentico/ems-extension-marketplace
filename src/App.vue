@@ -56,25 +56,37 @@ export default class App extends Vue {
   color: #2c3e50;
 }
 .btn {
+  display: inline-block;
+  padding: 9px 20px 8px;
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  user-select: none;
   text-decoration: none;
   color: #262524;
   background-color: #d6d6d6;
-  display: inline-block;
-  margin-bottom: 0;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
   transition: all 0.15s ease-in-out;
-  font-size: 16px;
-  line-height: 1.5;
-  border-radius: 3px;
-  padding: 6px 10px;
   width: 60%;
 }
 .btn:hover {
   background-color: #42388c;
   color: #fff;
+}
+.btn--justified {
+  width: 100%;
+}
+.btn--common {
+  color: #262524;
+  background-color: #e3e3e3;
+  border-color: #e3e3e3;
+  box-shadow: 0 3px 0 0 #d6d6d6;
 }
 </style>

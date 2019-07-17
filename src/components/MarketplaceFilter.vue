@@ -8,7 +8,7 @@
         class="marketplace-search__input"
       />
       <button class="marketplace-search__search-button" v-on:click="search">
-        <font-awesome-icon icon="search" />
+        <font-awesome-icon class="magnifying-glass" icon="search" />
       </button>
     </div>
   </div>
@@ -48,7 +48,7 @@ export default class MarketplaceFilter extends Vue {
 .marketplace-filter {
   padding: 30px 0 30px 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-flow: row wrap;
   width: 100%;
 }
@@ -89,5 +89,8 @@ export default class MarketplaceFilter extends Vue {
   padding: 1px 6px;
   border: none;
   box-shadow: none;
+}
+.magnifying-glass {
+  margin: 6px;
 }
 </style>
