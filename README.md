@@ -40,6 +40,6 @@ This repository is a source of the [Kentico EMS extension marketplace](devnet.ke
   npm run build
   ```
 
-* Commit marketplace source code to this repository
+  * Commit marketplace source code to this repository
+  * Commit bundled file `extension-marketplace.min.js` located on the `--dest` build script parameter location to the [kentico.com](kentico.com) source code and propagate it to the production environment.
 
-* Commit bundled file `extension-marketplace.min.js` located on the `--dest` build script parameter location to the [kentico.com](kentico.com) source code.
