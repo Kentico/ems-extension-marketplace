@@ -4,7 +4,7 @@
       <h3 class="marketplace-item-header__title">
         <a v-bind:href="item.sourceUrl">{{ item.name }}</a>
       </h3>
-      <span class="marketplace-item-header__source">by {{ item.source }}</span>
+      <span class="marketplace-item-header__source">by {{ item.author }}</span>
     </div>
     <div class="marketplace-item-content">
       <div class="marketplace-item-content__description">

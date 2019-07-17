@@ -28,7 +28,7 @@ import store from "./store";
 export default class App extends Vue {
   beforeMount() {
     fetch(
-      "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/manifest.json" +
+      "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
         "?t=" +
         new Date().valueOf()
     ).then(response => {

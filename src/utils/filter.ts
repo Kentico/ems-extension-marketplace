@@ -13,7 +13,7 @@ export default function performItemsFiltering(searchPhrase: string) {
       item =>
         item.name.toLocaleLowerCase().includes(lowerCasedSearchPhrase) ||
         item.description.toLocaleLowerCase().includes(lowerCasedSearchPhrase) ||
-        item.source.toLocaleLowerCase().includes(lowerCasedSearchPhrase)
+        item.author.toLocaleLowerCase().includes(lowerCasedSearchPhrase)
     );
 
     store.commit(updateFilteredItemsMutation, filteredItems);
