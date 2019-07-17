@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import MarketplaceItemDetail from "@/Components/MarketplaceItemDetail.vue";
+import MarketplaceItemDetail from "@/components/MarketplaceItemDetail.vue";
 import MarketplaceItemModel from '@/models/marketplaceItemModel';
 
 describe("MarketplaceItemDetail.vue", () => {
