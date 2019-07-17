@@ -32,7 +32,7 @@ This repository is a source of the [Kentico EMS extension marketplace](devnet.ke
   npm run watch
   ```
 
-  * Now it is possible to see the result of your changes on [devnet.kentico.com/marketplace](devnet.kentico.com/marketplace).
+  * Now it is possible to see the result of your changes on [devnet.localkentico.com/marketplace](devnet.localkentico.com/marketplace).
 
 * When you are done with the development, stop `watch` script and compile and minifies for production.
 
