@@ -9,7 +9,7 @@
         <MarketplaceItemDetail v-bind:item="item" />
       </div>
     </div>
-    <LoadMoreButton />
+    <LoadMoreButton v-if="isShowMoreButtonVisible" />
   </div>
 </template>
 
@@ -34,6 +34,9 @@ import LoadMoreButton from "./loadMoreButton.vue";
 export default class MarketplaceItemList extends Vue {
   get itemsToShow(): MarketplaceItemModel[] {
     return this.$store.getters.itemsToShow;
+  }
+  get isShowMoreButtonVisible() {
+    return this.$store.getters.itemsToShow < this.$store.getters.filteredItems;
   }
 }
 </script>

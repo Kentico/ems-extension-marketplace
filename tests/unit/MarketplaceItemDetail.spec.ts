@@ -7,9 +7,13 @@ describe("MarketplaceItemDetail.vue", () => {
     const item: MarketplaceItemModel = {
       name: "dummyName",
       description: "dummyDescription",
+      thumbnailUrl: "https://localhost.local/thumbnailUrl.png",
       author: "dummySource",
       sourceUrl: "https://localhost.local",
-      thumbnailUrl: "https://localhost.local/thumbnailUrl.png"
+      version: "1.0.0-beta1",
+      kenticoVersion: "12.0.29",
+      category: "mvc widget",
+      tags: ["mvc", "youtube", "video", "inline-editor"]
     };
 
     const wrapper = shallowMount(MarketplaceItemDetail, {
