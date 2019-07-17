@@ -19,7 +19,7 @@ import store, {
   addPageAction
 } from "@/store";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
-import { addNextPage } from "../helpers/pager";
+import { addNextPage } from "../utils/pager";
 
 @Component({
   components: {

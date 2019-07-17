@@ -15,8 +15,10 @@ import SubmitNewItem from "./components/SubmitNewItem.vue";
 import MarketplaceFilter from "./components/MarketplaceFilter.vue";
 import { initItemsStateAction } from "./store";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
+import store from "./store";
 
 @Component({
+  store,
   components: {
     MarketplaceItemList,
     MarketplaceFilter,

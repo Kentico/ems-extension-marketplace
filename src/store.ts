@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
-import performItemsFiltering from "./helpers/filter";
-import { resetPaging, addNextPage } from "./helpers/pager";
+import performItemsFiltering from "./utils/filter";
+import { resetPaging, addNextPage } from "./utils/pager";
 
 export const updateAllItemsMutation = "updateAllItems";
 export const updateFilteredItemsMutation = "updateFilteredItems";
