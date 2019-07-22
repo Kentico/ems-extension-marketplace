@@ -1,6 +1,15 @@
 # Kentico EMS Extension Marketplace
 
-This repository is a source of the [Kentico EMS extension marketplace](devnet.kentico.com/marketplace).
+
+[![Build Status](https://api.travis-ci.com/Kentico/ems-extension-marketplace.svg?branch=master)](https://travis-ci.com/Kentico/ems-extension-marketplace)
+[![Live](https://img.shields.io/badge/Live-brightgreen.svg)](https://devnet.kentico.com/)
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico)
+[![Maintainability](https://api.codeclimate.com/v1/badges/54b3d5094d76ef66d0b4/maintainability)](https://codeclimate.com/github/Kentico/ems-extension-marketplace/maintainability)
+
+
+## :warning: Work in progress
+
+This repository is a source of the [Kentico EMS extension marketplace](https://devnet.kentico.com/marketplace). Items displayed on the marketplace are stored in the the [Kentico/devnet.kentico.com](https://github.com/Kentico/devnet.kentico.com/) repository.
 
 ## Getting started
 
@@ -43,3 +52,4 @@ This repository is a source of the [Kentico EMS extension marketplace](devnet.ke
   * Commit marketplace source code to this repository
   * Commit bundled file `extension-marketplace.min.js` located on the `--dest` build script parameter location to the [kentico.com](kentico.com) source code and propagate it to the production environment.
 
+![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/ems-extension-marketplace?pixel)
