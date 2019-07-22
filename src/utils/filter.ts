@@ -5,9 +5,16 @@ import { resetPaging } from "./pager";
 export default function performItemsFiltering() {
   const allItems: Array<MarketplaceItemModel> = store.state.data.allItems;
   const searchPhrase = store.state.filter.searchPhrase;
-  const searchedFilteredItems = applySearchFilter(allItems, searchPhrase);
+  const selectedCategories = store.getters.selectedCategories;
+
+  const searchFilteredItems = applySearchFilter(allItems, searchPhrase);
+  const categoryFilteredItems = applyCategoriesFilter(
+    searchFilteredItems,
+    selectedCategories
+  );
+
   resetPaging();
-  store.commit(updateFilteredItemsMutation, searchedFilteredItems);
+  store.commit(updateFilteredItemsMutation, categoryFilteredItems);
 }
 
 function applySearchFilter(
@@ -25,5 +32,18 @@ function applySearchFilter(
         item.author.toLocaleLowerCase().includes(lowerCasedSearchPhrase)
     );
     return filteredItems;
+  }
+}
+
+function applyCategoriesFilter(
+  itemsToFilter: Array<MarketplaceItemModel>,
+  selectedCategories: Array<string>
+): Array<MarketplaceItemModel> {
+  if (selectedCategories.length === 0) {
+    return itemsToFilter;
+  } else {
+    return itemsToFilter.filter(
+      item => selectedCategories.indexOf(item.category) !== -1
+    );
   }
 }

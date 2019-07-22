@@ -1,29 +1,39 @@
 import MarketplaceItemModel from "@/models/marketplaceItemModel";
 import store, {
-  updateCategoriesCountMutation,
+  updateCategoriesMutation,
   updateSelectedCategoriesMutation
 } from "@/store";
+import CategoryModel from "@/models/CategoryModel";
 
 export function initStoreWithCategories(allItems: Array<MarketplaceItemModel>) {
-  let categoriesCount = new Map<string, number>();
+  let categoriesCountMap = new Map<string, CategoryModel>();
   allItems.map(item => {
-    categoriesCount.has(item.category)
-      ? categoriesCount.set(
-          item.category,
-          categoriesCount.get(item.category)! + 1
-        )
-      : categoriesCount.set(item.category, 1);
+    categoriesCountMap.has(item.category)
+      ? categoriesCountMap.set(item.category, {
+          name: item.category,
+          count: categoriesCountMap.get(item.category)!.count + 1
+        } as CategoryModel)
+      : categoriesCountMap.set(item.category, {
+          name: item.category,
+          count: 1
+        } as CategoryModel);
   });
-  store.commit(updateCategoriesCountMutation, categoriesCount);
+  const categoriesCountArray = Array.from(categoriesCountMap.values());
+  store.commit(updateCategoriesMutation, categoriesCountArray);
 }
 
 export function toggleCategoryInSelectedCategories(categoryName: string) {
   const selectedCategories = store.state.filter.selectedCategories;
 
-  if (selectedCategories.has(categoryName)) {
-    selectedCategories.delete(categoryName);
+  const index = selectedCategories.indexOf(categoryName);
+
+  if (index === -1) {
+    // not in selected -> select
+    selectedCategories.push(categoryName);
   } else {
-    selectedCategories.add(categoryName);
+    // selected -> deselect
+    selectedCategories.splice(index, 1);
   }
+
   store.commit(updateSelectedCategoriesMutation, selectedCategories);
 }

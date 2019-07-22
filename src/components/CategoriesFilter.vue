@@ -1,14 +1,14 @@
 <template>
   <div class="categories-filter">
     <a
-      v-for="(category, key) in Array.from(categories)"
-      v-bind:key="key"
+      v-for="category in categories"
+      v-bind:key="category.name"
       v-bind:class="{
         'category-caption': true,
-        'category-caption--selected': Math.random() >= 0.5
+        'category-caption--selected': isCategorySelected(category.name)
       }"
-      @click="onCategoryClick(category[0])"
-      >{{ category[0] }} ({{ category[1] }})</a
+      @click="onCategoryClick(category.name)"
+      >{{ category.name }} ({{ category.count }})</a
     >
   </div>
 </template>
@@ -17,30 +17,40 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { updateSelectedCategoriesMutation } from "@/store";
 import { toggleCategoryInSelectedCategories } from "@/utils/categories";
+import CategoryModel from "../models/CategoryModel";
+import performItemsFiltering from "@/utils/filter";
 
 @Component({
   components: {}
 })
 export default class CategoriesFilter extends Vue {
-  get categories() {
-    return this.$store.getters.categoriesCount;
+  get categories(): Array<CategoryModel> {
+    return this.$store.getters.categories;
   }
 
-  get selectedCategories(): Set<string> {
+  get selectedCategories(): Array<string> {
     return this.$store.getters.selectedCategories;
   }
 
-  set selectedCategories(selectedCategories: Set<string>) {
+  set selectedCategories(selectedCategories: Array<string>) {
     this.$store.commit(updateSelectedCategoriesMutation, selectedCategories);
   }
 
+  isCategorySelected(categoryName: string): boolean {
+    return this.selectedCategories.indexOf(categoryName) !== -1;
+  }
+
   onCategoryClick(categoryName: string) {
+    performItemsFiltering();
     toggleCategoryInSelectedCategories(categoryName);
   }
 }
 </script>
 
 <style scoped lang="scss">
+.categories-filter {
+  padding: 0 0 0 12px;
+}
 .category-caption {
   display: inline-block;
   border-radius: 4px;
