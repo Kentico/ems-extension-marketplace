@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:ci": "vue-cli-service build",
-    "build": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\"",
+    "build:ci": "vue-cli-service build --target wc --name extension-marketplace",
+    "build": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\" && npm run copy:info",
     "watch": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\" --watch",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "test:debug": "node --inspect-brk node_modules/.bin/vue-cli-service test:unit --no-cache --watch --runInBand"
+    "copy:info": " cpx -v public/INFO.md \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\""
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -34,6 +34,7 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "cpx": "^1.5.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
