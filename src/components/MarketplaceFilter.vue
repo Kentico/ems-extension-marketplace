@@ -1,7 +1,7 @@
 <template>
   <div class="marketplace-filter">
     <SearchFilter />
-    <!-- <CategoriesFilter /> -->
+    <CategoriesFilter />
   </div>
 </template>
 

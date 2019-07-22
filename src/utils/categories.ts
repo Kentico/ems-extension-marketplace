@@ -4,6 +4,7 @@ import store, {
   updateSelectedCategoriesMutation
 } from "@/store";
 import CategoryModel from "@/models/CategoryModel";
+import performItemsFiltering from "./filter";
 
 export function initStoreWithCategories(allItems: Array<MarketplaceItemModel>) {
   let categoriesCountMap = new Map<string, CategoryModel>();
@@ -36,4 +37,5 @@ export function toggleCategoryInSelectedCategories(categoryName: string) {
   }
 
   store.commit(updateSelectedCategoriesMutation, selectedCategories);
+  performItemsFiltering();
 }

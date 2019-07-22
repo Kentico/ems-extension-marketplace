@@ -18,7 +18,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { updateSelectedCategoriesMutation } from "@/store";
 import { toggleCategoryInSelectedCategories } from "@/utils/categories";
 import CategoryModel from "../models/CategoryModel";
-import performItemsFiltering from "@/utils/filter";
 
 @Component({
   components: {}
@@ -41,7 +40,6 @@ export default class CategoriesFilter extends Vue {
   }
 
   onCategoryClick(categoryName: string) {
-    performItemsFiltering();
     toggleCategoryInSelectedCategories(categoryName);
   }
 }

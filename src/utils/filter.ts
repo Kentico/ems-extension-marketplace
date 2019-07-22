@@ -5,7 +5,7 @@ import { resetPaging } from "./pager";
 export default function performItemsFiltering() {
   const allItems: Array<MarketplaceItemModel> = store.state.data.allItems;
   const searchPhrase = store.state.filter.searchPhrase;
-  const selectedCategories = store.getters.selectedCategories;
+  const selectedCategories = store.state.filter.selectedCategories;
 
   const searchFilteredItems = applySearchFilter(allItems, searchPhrase);
   const categoryFilteredItems = applyCategoriesFilter(
@@ -13,8 +13,8 @@ export default function performItemsFiltering() {
     selectedCategories
   );
 
-  resetPaging();
   store.commit(updateFilteredItemsMutation, categoryFilteredItems);
+  resetPaging();
 }
 
 function applySearchFilter(
