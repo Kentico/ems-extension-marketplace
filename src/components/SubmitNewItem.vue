@@ -5,7 +5,7 @@
       Submit a new extension without any certification to share it with the
       Kentico community
     </p>
-    <a href="kentico.com" class="btn">Submit a new item!</a>
+    <a href="https://github.com/Kentico/devnet.kentico.com#submit-a-new-kentico-ems-extension-to-devnet" class="btn">Submit a new item!</a>
   </div>
 </template>
 
