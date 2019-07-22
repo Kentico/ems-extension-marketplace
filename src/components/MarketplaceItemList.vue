@@ -23,7 +23,7 @@ import store, {
 } from "@/store";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 import { addNextPage } from "../utils/pager";
-import LoadMoreButton from "./loadMoreButton.vue";
+import LoadMoreButton from "./LoadMoreButton.vue";
 
 @Component({
   components: {

@@ -4,7 +4,7 @@ import store, {
 } from "@/store";
 import MarketplaceItemModel from "@/models/marketplaceItemModel";
 
-const pageSize: number = 8;
+const pageSize: number = 9;
 
 export function resetPaging() {
   const lastItemIndex: number =

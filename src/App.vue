@@ -18,6 +18,7 @@ import MarketplaceItemModel from "./models/marketplaceItemModel";
 import store from "./store";
 import { initStoreWithTags } from "./utils/tags";
 import { initStoreWithItems } from "./utils/items";
+import { initStoreWithCategories } from "./utils/categories";
 
 @Component({
   store,
@@ -38,6 +39,7 @@ export default class App extends Vue {
         const allItems = json as MarketplaceItemModel[];
         initStoreWithItems(allItems);
         initStoreWithTags(allItems);
+        initStoreWithCategories(allItems);
       });
     });
   }

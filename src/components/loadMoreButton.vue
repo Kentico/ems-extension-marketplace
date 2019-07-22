@@ -16,7 +16,7 @@ import { addPageAction } from "@/store";
 })
 export default class LoadMoreButton extends Vue {
   loadMoreItems() {
-    this.$store.dispatch(addPageAction, {});
+    this.$store.dispatch(addPageAction);
   }
 }
 </script>

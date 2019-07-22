@@ -8,8 +8,13 @@ export const updateAllItemsMutation = "updateAllItems";
 export const updateFilteredItemsMutation = "updateFilteredItems";
 export const updateItemsToShowMutation = "updateItemsToShow";
 export const updateTagsCountMutation = "updateTagsCount";
+export const updateCategoriesCountMutation = "updateCategoriesCount";
 
-export const updateFilterPassphraseMutation = "updateFilterPassphrase";
+export const updateFilterSearchPhraseMutation = "updateFilterSearchPhrase";
+export const updateSelectedCategoriesMutation = "updateSelectedCategories";
+export const toggleCategoryInSelectedCategoriesMutation =
+  "toggleCategoryInSelectedCategories";
+
 export const addNextPageInPagerListingMutation = "addNextPageInPagerListing";
 export const updatePagerLastItemIndexMutation = "updatePagerLastItemIndex";
 
@@ -24,10 +29,12 @@ export default new Vuex.Store({
       allItems: Array<MarketplaceItemModel>(),
       filteredItems: Array<MarketplaceItemModel>(),
       itemsToShow: Array<MarketplaceItemModel>(),
-      tagsCount: new Map<string, number>()
+      tagsCount: new Map<string, number>(),
+      categoriesCount: new Map<string, number>()
     },
     filter: {
-      searchPhrase: ""
+      searchPhrase: "",
+      selectedCategories: new Set<string>()
     },
     pager: {
       lastItemIndex: 0
@@ -46,8 +53,14 @@ export default new Vuex.Store({
     updateTagsCount(state, tagsCount: Map<string, number>) {
       state.data.tagsCount = tagsCount;
     },
+    updateCategoriesCount(state, categoriesCount: Map<string, number>) {
+      state.data.categoriesCount = categoriesCount;
+    },
     updateFilterSearchPhrase(state, newSearchPhrase: string) {
       state.filter.searchPhrase = newSearchPhrase;
+    },
+    updateSelectedCategories(state, selectedCategories: Set<string>) {
+      state.filter.selectedCategories = selectedCategories;
     },
     updatePagerLastItemIndex(state, lastItemIndex) {
       state.pager.lastItemIndex = lastItemIndex;
@@ -58,7 +71,9 @@ export default new Vuex.Store({
     filteredItems: state => state.data.filteredItems,
     itemsToShow: state => state.data.itemsToShow,
     tagsCount: state => state.data.tagsCount,
+    categoriesCount: state => state.data.categoriesCount,
     filterSearchphrase: state => state.filter.searchPhrase,
+    selectedCategories: state => state.filter.selectedCategories,
     pagerLastItemIndex: state => state.pager.lastItemIndex
   },
   actions: {
@@ -68,12 +83,12 @@ export default new Vuex.Store({
       resetPaging();
     },
     updateFilterPassphrase(context, newSearchPhrase: string) {
-      context.commit(updateFilterPassphraseMutation, newSearchPhrase);
+      context.commit(updateFilterSearchPhraseMutation, newSearchPhrase);
     },
-    filterItems(_, searchPhrase) {
-      performItemsFiltering(searchPhrase);
+    filterItems(_) {
+      performItemsFiltering();
     },
-    addPage(_, tmp) {
+    addPage(_) {
       addNextPage();
     }
   }
