@@ -1,12 +1,13 @@
 <template>
   <div class="search-filter">
     <input
-      v-model="searchPhrase"
-      v-on:keyup.enter="search"
       type="text"
       class="search-filter__input"
+      v-model="searchPhrase"
+      v-on:keyup.enter="search"
+      v-on:input="debounceSearch"
     />
-    <button class="search-filter__search-button" v-on:click="search">
+    <button class="search-filter__search-button" disabled>
       <font-awesome-icon class="magnifying-glass" icon="search" />
     </button>
   </div>
@@ -31,6 +32,8 @@ library.add(faSearch);
   }
 })
 export default class SearchFilter extends Vue {
+  private searchDebounceTimeout: number | undefined = undefined;
+
   get searchPhrase() {
     return store.getters.filterSearchphrase;
   }
@@ -39,8 +42,11 @@ export default class SearchFilter extends Vue {
     this.$store.commit(updateFilterSearchPhraseMutation, newSearchPhrase);
   }
 
-  search() {
-    filterItems();
+  debounceSearch() {
+    if (this.searchDebounceTimeout) clearTimeout(this.searchDebounceTimeout);
+    this.searchDebounceTimeout = setTimeout(() => {
+      filterItems();
+    }, 200);
   }
 }
 </script>
