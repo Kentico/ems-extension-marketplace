@@ -47,7 +47,7 @@ export default class CategoriesFilter extends Vue {
 
 <style scoped lang="scss">
 .categories-filter {
-  padding: 0 0 0 12px;
+  margin: 4px 10px 4px 4px;
 }
 .category-caption {
   display: inline-block;

@@ -44,12 +44,11 @@ export default class MarketplaceItemList extends Vue {
 <style scoped lang="scss">
 .marketplace-item-list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-flow: row wrap;
 }
 .marketplace-item-detail-container {
-  max-width: 280px;
-  min-width: 280px;
-  margin: 0 10px 18px 10px;
+  max-width: 290px;
+  margin: 0 10px 18px 0;
 }
 </style>

@@ -79,7 +79,7 @@ export default class App extends Vue {
   cursor: pointer;
   user-select: none;
   transition: all 0.15s ease-in-out;
-  width: 60%;
+  width: 71%;
 }
 .btn:hover {
   background-color: #42388c;

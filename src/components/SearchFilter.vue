@@ -51,11 +51,12 @@ export default class SearchFilter extends Vue {
   display: block;
   background-color: #fff;
   width: 286px;
+  margin: 4px 10px 4px 0;
 }
 .search-filter__input {
   float: left;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px 4px 4px 4px;
   outline: 0;
   line-height: 1.2;
   font-size: 14px;
