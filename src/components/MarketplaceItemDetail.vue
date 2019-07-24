@@ -22,12 +22,14 @@
       <div class="marketplace-item-content__statistics"></div>
     </div>
     <div class="marketplace-item-footer">
-      <a
+      <button
+        v-on:click="goToProject(item)"
         v-bind:data-tracking-label="item.name"
         v-bind:href="item.sourceUrl"
         class="btn marketplace-item-content__action"
-        >Take me to the Project</a
       >
+        Take me to the Project
+      </button>
     </div>
   </div>
 </template>
@@ -47,8 +49,17 @@ export default class MarketplaceItemDetail extends Vue {
       : `${this.item.description.slice(0, 160)}...`;
   }
 
-  goTo(url: string): void {
-    window.open(url);
+  goToProject(item: MarketplaceItemModel): void {
+    if (window && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: "event",
+        eventCategory: "Link",
+        eventAction: "open-marketplace-extension",
+        eventLabel: `${item.category};${item.name}`
+      });
+    }
+
+    window.open(item.sourceUrl, "_blank");
   }
 }
 </script>
@@ -120,6 +131,7 @@ p {
 }
 .marketplace-item-content__action {
   text-decoration: none;
+  width: 87%;
 }
 .marketplace-item-footer {
   height: 60px;
