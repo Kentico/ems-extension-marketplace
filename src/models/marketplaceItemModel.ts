@@ -5,7 +5,7 @@ export default class MarketplaceItemModel {
   author: string;
   sourceUrl: string;
   version: string;
-  kenticoVersion: string;
+  kenticoVersions: Array<string>;
   category: string;
   tags: Array<string>;
 
@@ -16,7 +16,7 @@ export default class MarketplaceItemModel {
     this.author = "";
     this.sourceUrl = "";
     this.version = "";
-    this.kenticoVersion = "";
+    this.kenticoVersions = Array<string>();
     this.category = "";
     this.tags = Array<string>();
   }

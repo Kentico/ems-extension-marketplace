@@ -11,7 +11,7 @@ describe("MarketplaceItemDetail.vue", () => {
       author: "dummySource",
       sourceUrl: "https://localhost.local",
       version: "1.0.0-beta1",
-      kenticoVersion: "12.0.29",
+      kenticoVersions: ["12.0.29"],
       category: "mvc widget",
       tags: ["mvc", "youtube", "video", "inline-editor"]
     };
