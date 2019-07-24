@@ -37,6 +37,9 @@ export default class App extends Vue {
     ).then(response => {
       return response.json().then(json => {
         const allItems = json as MarketplaceItemModel[];
+        allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
+          a.name.localeCompare(b.name)
+        );
         initStoreWithItems(allItems);
         initStoreWithTags(allItems);
         initStoreWithCategories(allItems);
