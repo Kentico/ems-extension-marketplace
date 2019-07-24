@@ -88,6 +88,9 @@ export default class App extends Vue {
   background-color: #42388c;
   color: #fff;
 }
+.btn:focus {
+  outline:none;
+}
 .btn--justified {
   width: 100%;
 }
