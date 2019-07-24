@@ -1,8 +1,8 @@
 <template>
-  <div class="marketplace-item" v-on:click="goTo(item.sourceUrl)">
+  <div class="marketplace-item">
     <div class="marketplace-item-header">
       <h3 class="marketplace-item-header__title">
-        <a v-bind:href="item.sourceUrl">{{ item.name }}</a>
+        <a>{{ item.name }}</a>
       </h3>
       <span class="marketplace-item-header__source">by {{ item.author }}</span>
     </div>
@@ -23,6 +23,7 @@
     </div>
     <div class="marketplace-item-footer">
       <a
+        v-bind:data-tracking-label="item.name"
         v-bind:href="item.sourceUrl"
         class="btn marketplace-item-content__action"
         >Take me to the Project</a
@@ -63,7 +64,6 @@ p {
 .marketplace-item-detail-container:hover .marketplace-item {
   box-shadow: 0 3px 0 0 #888;
   transition: all 0.15s ease-in-out;
-  cursor: pointer;
 }
 .marketplace-item-header {
   height: 74px;
