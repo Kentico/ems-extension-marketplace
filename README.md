@@ -25,7 +25,7 @@ This repository is a source of the [Kentico EMS extension marketplace](https://d
   npm run serve
   ```
 
-### *[Internal]* Develop on local [DevNet.Kentico.com](DevNet.Kentico.com) instance
+### *[Internal]* Develop on local [devnet.localkentico.com](https://devnet.localkentico.com) instance
 
 * Install dependencies
   
@@ -41,7 +41,7 @@ This repository is a source of the [Kentico EMS extension marketplace](https://d
   npm run watch
   ```
 
-  * Now it is possible to see the result of your changes on [devnet.localkentico.com/marketplace](devnet.localkentico.com/marketplace).
+  * Now it is possible to see the result of your changes on [devnet.localkentico.com/marketplace](https://devnet.localkentico.com/marketplace).
 
 * When you are done with the development, stop `watch` script and compile and minifies for production.
 
