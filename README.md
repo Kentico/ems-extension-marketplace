@@ -6,10 +6,7 @@
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico)
 [![Maintainability](https://api.codeclimate.com/v1/badges/54b3d5094d76ef66d0b4/maintainability)](https://codeclimate.com/github/Kentico/ems-extension-marketplace/maintainability)
 
-
-## :warning: Work in progress
-
-This repository is a source of the [Kentico EMS extension marketplace](https://devnet.kentico.com/marketplace). Items displayed on the marketplace are stored in the the [Kentico/devnet.kentico.com](https://github.com/Kentico/devnet.kentico.com/) repository.
+This repository is a source of the [Kentico EMS extension marketplace](https://devnet.kentico.com/marketplace). Items displayed on the marketplace are stored in the the [Kentico/devnet.kentico.com](https://github.com/Kentico/devnet.kentico.com) respository.
 
 ## Getting started
 
