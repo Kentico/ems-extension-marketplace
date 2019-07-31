@@ -4,7 +4,6 @@
       type="text"
       class="search-filter__input"
       v-model="searchPhrase"
-      v-on:keyup.enter="search"
       v-on:input="debounceSearch"
     />
     <button class="search-filter__search-button" disabled>
