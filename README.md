@@ -1,10 +1,13 @@
 # Kentico EMS Extension Marketplace
 
-
 [![Build Status](https://api.travis-ci.com/Kentico/ems-extension-marketplace.svg?branch=master)](https://travis-ci.com/Kentico/ems-extension-marketplace)
 [![Live](https://img.shields.io/badge/Live-brightgreen.svg)](https://devnet.kentico.com/)
-[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico)
 [![Maintainability](https://api.codeclimate.com/v1/badges/54b3d5094d76ef66d0b4/maintainability)](https://codeclimate.com/github/Kentico/ems-extension-marketplace/maintainability)
+
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico)
+
+[![Netlify Preview Status](https://api.netlify.com/api/v1/badges/14fdd323-c1b0-40ec-a7a9-c2bf02b192f4/deploy-status)](https://app.netlify.com/sites/ems-extension-marketplace/deploys)
+[![Preview](https://img.shields.io/badge/Preview-brightgreen.svg)](https://ems-extension-marketplace.netlify.com/demo.html)
 
 This repository is a source of the [Kentico EMS extension marketplace](https://devnet.kentico.com/marketplace). Items displayed on the marketplace are stored in the the [Kentico/devnet.kentico.com](https://github.com/Kentico/devnet.kentico.com) respository.
 
