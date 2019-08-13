@@ -1,6 +1,7 @@
 <template>
   <div class="marketplace-filter">
     <SearchFilter />
+    <KenticoVersionsSelector />
     <CategoriesFilter />
   </div>
 </template>
@@ -9,11 +10,13 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import CategoriesFilter from "./CategoriesFilter.vue";
 import SearchFilter from "./SearchFilter.vue";
+import KenticoVersionsSelector from "./KenticoVersionsSelector.vue";
 
 @Component({
   components: {
     SearchFilter,
-    CategoriesFilter
+    CategoriesFilter,
+    KenticoVersionsSelector
   }
 })
 export default class MarketplaceFilter extends Vue {}

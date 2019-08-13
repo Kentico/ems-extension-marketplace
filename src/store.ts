@@ -4,15 +4,26 @@ import MarketplaceItemModel from "./models/marketplaceItemModel";
 import performItemsFiltering from "./utils/filter";
 import { resetPaging, addNextPage } from "./utils/pager";
 import CategoryModel from "./models/CategoryModel";
+import { initStoreWithItems } from "./utils/items";
+import { initStoreWithTags } from "./utils/tags";
+import { initStoreWithCategories } from "./utils/categories";
+import {
+  initStoreWithKenticoVersions,
+  KENTICO_VERSION_ALL_VERSIONS
+} from "./utils/kenticoVersions";
 
 export const updateAllItemsMutation = "updateAllItems";
 export const updateFilteredItemsMutation = "updateFilteredItems";
 export const updateItemsToShowMutation = "updateItemsToShow";
 export const updateTagsCountMutation = "updateTagsCount";
+export const updateKenticoVersionsFilterMutation =
+  "updateKenticoVersionsFilter";
 export const updateCategoriesMutation = "updateCategories";
 
 export const updateFilterSearchPhraseMutation = "updateFilterSearchPhrase";
 export const updateSelectedCategoriesMutation = "updateSelectedCategories";
+export const updateSelectedKenticoVersionMutation =
+  "updateSelectedKenticoVersion";
 export const toggleCategoryInSelectedCategoriesMutation =
   "toggleCategoryInSelectedCategories";
 
@@ -24,6 +35,13 @@ export const addPageAction = "addPage";
 
 Vue.use(Vuex);
 
+export function initStore(allItems: Array<MarketplaceItemModel>) {
+  initStoreWithItems(allItems);
+  initStoreWithTags(allItems);
+  initStoreWithCategories(allItems);
+  initStoreWithKenticoVersions(allItems);
+}
+
 export default new Vuex.Store({
   state: {
     data: {
@@ -31,11 +49,13 @@ export default new Vuex.Store({
       filteredItems: Array<MarketplaceItemModel>(),
       itemsToShow: Array<MarketplaceItemModel>(),
       tagsCount: new Map<string, number>(),
-      categories: new Array<CategoryModel>()
+      categories: new Array<CategoryModel>(),
+      kenticoVersions: new Array<string>()
     },
     filter: {
       searchPhrase: "",
-      selectedCategories: new Array<string>()
+      selectedCategories: new Array<string>(),
+      selectedKenticoVersion: KENTICO_VERSION_ALL_VERSIONS
     },
     pager: {
       lastItemIndex: 0
@@ -63,6 +83,12 @@ export default new Vuex.Store({
     updateSelectedCategories(state, selectedCategories: Array<string>) {
       state.filter.selectedCategories = selectedCategories;
     },
+    updateSelectedKenticoVersion(state, selectedKenticoVersion: string) {
+      state.filter.selectedKenticoVersion = selectedKenticoVersion;
+    },
+    updateKenticoVersionsFilter(state, kenticoVersions: Array<string>) {
+      state.data.kenticoVersions = kenticoVersions;
+    },
     updatePagerLastItemIndex(state, lastItemIndex) {
       state.pager.lastItemIndex = lastItemIndex;
     }
@@ -73,8 +99,10 @@ export default new Vuex.Store({
     itemsToShow: state => state.data.itemsToShow,
     tagsCount: state => state.data.tagsCount,
     categories: state => state.data.categories,
+    kenticoVersions: state => state.data.kenticoVersions,
     filterSearchphrase: state => state.filter.searchPhrase,
     selectedCategories: state => state.filter.selectedCategories,
+    selectedKenticoVersion: state => state.filter.selectedKenticoVersion,
     pagerLastItemIndex: state => state.pager.lastItemIndex
   },
   actions: {

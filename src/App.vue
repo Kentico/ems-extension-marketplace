@@ -13,12 +13,9 @@ import { Component, Vue } from "vue-property-decorator";
 import MarketplaceItemList from "./components/MarketplaceItemList.vue";
 import SubmitNewItem from "./components/SubmitNewItem.vue";
 import MarketplaceFilter from "./components/MarketplaceFilter.vue";
-import { initItemsStateAction } from "./store";
+import { initItemsStateAction, initStore } from "./store";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
 import store from "./store";
-import { initStoreWithTags } from "./utils/tags";
-import { initStoreWithItems } from "./utils/items";
-import { initStoreWithCategories } from "./utils/categories";
 
 @Component({
   store,
@@ -40,9 +37,7 @@ export default class App extends Vue {
         allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
           a.name.localeCompare(b.name)
         );
-        initStoreWithItems(allItems);
-        initStoreWithTags(allItems);
-        initStoreWithCategories(allItems);
+        initStore(allItems);
       });
     });
   }
@@ -89,7 +84,7 @@ export default class App extends Vue {
   color: #fff;
 }
 .btn:focus {
-  outline:none;
+  outline: none;
 }
 .btn--justified {
   width: 100%;

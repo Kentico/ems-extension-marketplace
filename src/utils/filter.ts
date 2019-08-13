@@ -1,19 +1,25 @@
 import store, { updateFilteredItemsMutation } from "@/store";
 import MarketplaceItemModel from "@/models/marketplaceItemModel";
 import { resetPaging } from "./pager";
+import { KENTICO_VERSION_ALL_VERSIONS } from "./kenticoVersions";
 
 export default function performItemsFiltering() {
   const allItems: Array<MarketplaceItemModel> = store.state.data.allItems;
   const searchPhrase = store.state.filter.searchPhrase;
   const selectedCategories = store.state.filter.selectedCategories;
+  const selectedKenticoVersion = store.state.filter.selectedKenticoVersion;
 
   const searchFilteredItems = applySearchFilter(allItems, searchPhrase);
   const categoryFilteredItems = applyCategoriesFilter(
     searchFilteredItems,
     selectedCategories
   );
+  const itemsFilteredByKenticoVersion = applyKenticoversionFilter(
+    categoryFilteredItems,
+    selectedKenticoVersion
+  );
 
-  store.commit(updateFilteredItemsMutation, categoryFilteredItems);
+  store.commit(updateFilteredItemsMutation, itemsFilteredByKenticoVersion);
   resetPaging();
 }
 
@@ -46,4 +52,29 @@ function applyCategoriesFilter(
       item => selectedCategories.indexOf(item.category) !== -1
     );
   }
+}
+
+function applyKenticoversionFilter(
+  itemsToFilter: Array<MarketplaceItemModel>,
+  selectedKenticoVersion: string
+) {
+  if (selectedKenticoVersion === KENTICO_VERSION_ALL_VERSIONS) {
+    return itemsToFilter;
+  }
+
+  const filteredItems = itemsToFilter.filter(item => {
+    return doesItemSupportKenticoVersion(item, selectedKenticoVersion);
+  });
+
+  return filteredItems;
+}
+
+function doesItemSupportKenticoVersion(
+  item: MarketplaceItemModel,
+  selectedKenticoVersion: string
+): boolean {
+  const foundVersions = item.kenticoVersions.filter(
+    version => parseInt(version) === parseInt(selectedKenticoVersion)
+  );
+  return foundVersions && foundVersions.length > 0;
 }
