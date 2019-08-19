@@ -14,7 +14,7 @@ export default function performItemsFiltering() {
     searchFilteredItems,
     selectedCategories
   );
-  const itemsFilteredByKenticoVersion = applyKenticoversionFilter(
+  const itemsFilteredByKenticoVersion = applyKenticoVersionFilter(
     categoryFilteredItems,
     selectedKenticoVersion
   );
@@ -54,7 +54,7 @@ function applyCategoriesFilter(
   }
 }
 
-function applyKenticoversionFilter(
+function applyKenticoVersionFilter(
   itemsToFilter: Array<MarketplaceItemModel>,
   selectedKenticoVersion: string
 ) {
