@@ -82,16 +82,14 @@ Vue.directive("click-outside", {
 .kentico-versions-selector {
   transform: translate(0, 0);
   width: 190px;
-  padding: 4px 0 4px 0;
+  margin: 4px 10px 4px 0;
   cursor: pointer;
 }
 .selected {
   position: relative;
   display: flex;
-  height: 38px;
+  height: 40px;
   background-color: white;
-  border: solid black 1px;
-  border-radius: 2px;
   font-size: 14px;
 }
 .dropdown-icon {
@@ -100,33 +98,22 @@ Vue.directive("click-outside", {
   margin: 12px 6px 0 0;
 }
 .selected--title {
-  line-height: 38px;
+  line-height: 40px;
   width: 95%;
 }
 .options {
   position: absolute;
   left: 0;
-  top: 34px;
   width: 100%;
-  margin-top: 10px;
   background: #fff;
   border-radius: 2px;
   font-size: 14px;
 }
 .option {
   padding: 6px 20px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
 .option:hover {
   background-color: rgba(0, 0, 0, 0.05);
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.25s ease-out;
-}
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-  transform: translateY(-30px);
 }
 </style>
