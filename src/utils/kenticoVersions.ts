@@ -20,6 +20,6 @@ export function initStoreWithKenticoVersions(
   let majorVersionsSemverStrings = sortedMajorVersionsNumbers
     .map(String)
     .map(a => `${a}.0.0`);
-    
+
   store.commit(updateKenticoVersionsFilterMutation, majorVersionsSemverStrings);
 }
