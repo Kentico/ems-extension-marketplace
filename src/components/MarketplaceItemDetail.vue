@@ -101,6 +101,7 @@ p {
 }
 .marketplace-item-header__source {
   float: left;
+  text-align: left;
 }
 .marketplace-item-header__source > a {
   color: #262524;
