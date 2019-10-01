@@ -32,7 +32,10 @@ export default class KenticoVersionsSelector extends Vue {
   private isOpen = false;
 
   get kenticoVersions() {
-    return [KENTICO_VERSION_ALL_VERSIONS, ...store.getters.kenticoVersions];
+    let version = [...store.getters.kenticoVersions];
+    version.reverse().unshift(KENTICO_VERSION_ALL_VERSIONS)
+    return version;
+    //return [KENTICO_VERSION_ALL_VERSIONS, version.reverse()];
   }
 
   get selectedKenticoVersion() {
