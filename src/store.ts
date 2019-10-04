@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
+import TagModel from "./models/TagModel";
 import performItemsFiltering from "./utils/filter";
 import { resetPaging, addNextPage } from "./utils/pager";
 import CategoryModel from "./models/CategoryModel";
@@ -48,13 +49,14 @@ export default new Vuex.Store({
       allItems: Array<MarketplaceItemModel>(),
       filteredItems: Array<MarketplaceItemModel>(),
       itemsToShow: Array<MarketplaceItemModel>(),
-      tagsCount: new Map<string, number>(),
+      tagsCount: new Array<TagModel>(),
       categories: new Array<CategoryModel>(),
       kenticoVersions: new Array<string>()
     },
     filter: {
       searchPhrase: "",
       selectedCategories: new Array<string>(),
+      selectedTags: new Array<string>(),
       selectedKenticoVersion: KENTICO_VERSION_ALL_VERSIONS
     },
     pager: {
@@ -71,7 +73,7 @@ export default new Vuex.Store({
     updateItemsToShow(state, itemsToShow: Array<MarketplaceItemModel>) {
       state.data.itemsToShow = itemsToShow;
     },
-    updateTagsCount(state, tagsCount: Map<string, number>) {
+    updateTagsCount(state, tagsCount: Array<TagModel>) {
       state.data.tagsCount = tagsCount;
     },
     updateCategories(state, categories: Array<CategoryModel>) {
@@ -82,6 +84,9 @@ export default new Vuex.Store({
     },
     updateSelectedCategories(state, selectedCategories: Array<string>) {
       state.filter.selectedCategories = selectedCategories;
+    },
+    updateSelectedTags(state, selectedTags: Array<string>) {
+      state.filter.selectedTags = selectedTags;
     },
     updateSelectedKenticoVersion(state, selectedKenticoVersion: string) {
       state.filter.selectedKenticoVersion = selectedKenticoVersion;
@@ -102,6 +107,7 @@ export default new Vuex.Store({
     kenticoVersions: state => state.data.kenticoVersions,
     filterSearchphrase: state => state.filter.searchPhrase,
     selectedCategories: state => state.filter.selectedCategories,
+    selectedTags: state => state.filter.selectedTags,
     selectedKenticoVersion: state => state.filter.selectedKenticoVersion,
     pagerLastItemIndex: state => state.pager.lastItemIndex
   },

@@ -1,4 +1,5 @@
 import MarketplaceItemModel from "@/models/marketplaceItemModel";
+import TagModel from "@/models/TagModel";
 import store, { updateTagsCountMutation } from "@/store";
 
 export function initStoreWithTags(allItems: Array<MarketplaceItemModel>) {
@@ -10,5 +11,12 @@ export function initStoreWithTags(allItems: Array<MarketplaceItemModel>) {
         : tagsCount.set(tag, 1)
     );
   });
-  store.commit(updateTagsCountMutation, tagsCount);
+  const normalizedTags: Array<TagModel> = [];
+  tagsCount.forEach((count, tag) => {
+    normalizedTags.push({
+      count,
+      name: tag
+    });
+  });
+  store.commit(updateTagsCountMutation, normalizedTags);
 }
