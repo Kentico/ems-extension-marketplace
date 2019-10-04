@@ -19,7 +19,15 @@ import KenticoVersionsSelector from "./KenticoVersionsSelector.vue";
     KenticoVersionsSelector
   }
 })
-export default class MarketplaceFilter extends Vue {}
+export default class MarketplaceFilter extends Vue {
+  created() {
+    const queryParamsUrl: string = window.location.search;
+    const params: URLSearchParams = new URLSearchParams(queryParamsUrl);
+    const searchPhrase: string = params.get("s") || "";
+    const categoryFilter: string = params.get("category") || "";
+    const categoryFilterList: Array<string> = categoryFilter.split(";");
+  }
+}
 </script>
 
 <style scoped lang="scss">
