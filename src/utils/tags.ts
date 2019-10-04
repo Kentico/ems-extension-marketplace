@@ -1,6 +1,7 @@
 import MarketplaceItemModel from "@/models/marketplaceItemModel";
 import TagModel from "@/models/TagModel";
-import store, { updateTagsCountMutation } from "@/store";
+import store, { updateTagsMutation, updateSelectedTagsMutation } from "@/store";
+import performItemsFiltering from "./filter";
 
 export function initStoreWithTags(allItems: Array<MarketplaceItemModel>) {
   let tagsCount = new Map<string, number>();
@@ -18,5 +19,22 @@ export function initStoreWithTags(allItems: Array<MarketplaceItemModel>) {
       name: tag
     });
   });
-  store.commit(updateTagsCountMutation, normalizedTags);
+  store.commit(updateTagsMutation, normalizedTags);
+}
+
+export function toggleSelectedTag(tagName: string) {
+  const selectedTags = store.state.filter.selectedTags;
+
+  const index = selectedTags.indexOf(tagName);
+
+  if (index === -1) {
+    // not in selected -> select
+    selectedTags.push(tagName);
+  } else {
+    // selected -> deselect
+    selectedTags.splice(index, 1);
+  }
+
+  store.commit(updateSelectedTagsMutation, selectedTags);
+  performItemsFiltering();
 }

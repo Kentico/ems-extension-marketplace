@@ -3,6 +3,7 @@
     <SearchFilter />
     <KenticoVersionsSelector />
     <CategoriesFilter />
+    <TagsFilter />
   </div>
 </template>
 
@@ -11,9 +12,11 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import CategoriesFilter from "./CategoriesFilter.vue";
 import SearchFilter from "./SearchFilter.vue";
 import KenticoVersionsSelector from "./KenticoVersionsSelector.vue";
+import TagsFilter from "./TagsFilter.vue";
 
 @Component({
   components: {
+    TagsFilter,
     SearchFilter,
     CategoriesFilter,
     KenticoVersionsSelector

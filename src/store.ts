@@ -16,13 +16,14 @@ import {
 export const updateAllItemsMutation = "updateAllItems";
 export const updateFilteredItemsMutation = "updateFilteredItems";
 export const updateItemsToShowMutation = "updateItemsToShow";
-export const updateTagsCountMutation = "updateTagsCount";
+export const updateTagsMutation = "updateTags";
 export const updateKenticoVersionsFilterMutation =
   "updateKenticoVersionsFilter";
 export const updateCategoriesMutation = "updateCategories";
 
 export const updateFilterSearchPhraseMutation = "updateFilterSearchPhrase";
 export const updateSelectedCategoriesMutation = "updateSelectedCategories";
+export const updateSelectedTagsMutation = "updateSelectedTags";
 export const updateSelectedKenticoVersionMutation =
   "updateSelectedKenticoVersion";
 export const toggleCategoryInSelectedCategoriesMutation =
@@ -49,7 +50,7 @@ export default new Vuex.Store({
       allItems: Array<MarketplaceItemModel>(),
       filteredItems: Array<MarketplaceItemModel>(),
       itemsToShow: Array<MarketplaceItemModel>(),
-      tagsCount: new Array<TagModel>(),
+      tags: new Array<TagModel>(),
       categories: new Array<CategoryModel>(),
       kenticoVersions: new Array<string>()
     },
@@ -73,8 +74,8 @@ export default new Vuex.Store({
     updateItemsToShow(state, itemsToShow: Array<MarketplaceItemModel>) {
       state.data.itemsToShow = itemsToShow;
     },
-    updateTagsCount(state, tagsCount: Array<TagModel>) {
-      state.data.tagsCount = tagsCount;
+    updateTags(state, tags: Array<TagModel>) {
+      state.data.tags = tags;
     },
     updateCategories(state, categories: Array<CategoryModel>) {
       state.data.categories = categories;
@@ -102,7 +103,7 @@ export default new Vuex.Store({
     allItems: state => state.data.allItems,
     filteredItems: state => state.data.filteredItems,
     itemsToShow: state => state.data.itemsToShow,
-    tagsCount: state => state.data.tagsCount,
+    tags: state => state.data.tags,
     categories: state => state.data.categories,
     kenticoVersions: state => state.data.kenticoVersions,
     filterSearchphrase: state => state.filter.searchPhrase,
