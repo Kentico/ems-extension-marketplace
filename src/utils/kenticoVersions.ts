@@ -16,7 +16,7 @@ export function initStoreWithKenticoVersions(
     });
   });
 
-  let sortedMajorVersionsNumbers = majorVersionsNumbers.sort((a, b) => a - b);
+  let sortedMajorVersionsNumbers = majorVersionsNumbers.sort((a, b) => b - a);
   let majorVersionsSemverStrings = sortedMajorVersionsNumbers
     .map(String)
     .map(a => `${a}.0.0`);
