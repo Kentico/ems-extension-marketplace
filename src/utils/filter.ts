@@ -7,6 +7,7 @@ export default function performItemsFiltering() {
   const allItems: Array<MarketplaceItemModel> = store.state.data.allItems;
   const searchPhrase = store.state.filter.searchPhrase;
   const selectedCategories = store.state.filter.selectedCategories;
+  const selectedTags = store.state.filter.selectedTags;
   const selectedKenticoVersion = store.state.filter.selectedKenticoVersion;
 
   const searchFilteredItems = applySearchFilter(allItems, searchPhrase);
@@ -14,8 +15,9 @@ export default function performItemsFiltering() {
     searchFilteredItems,
     selectedCategories
   );
+  const tagFilteredItems = applyTagsFilter(categoryFilteredItems, selectedTags);
   const itemsFilteredByKenticoVersion = applyKenticoVersionFilter(
-    categoryFilteredItems,
+    tagFilteredItems,
     selectedKenticoVersion
   );
 
@@ -50,6 +52,19 @@ function applyCategoriesFilter(
   } else {
     return itemsToFilter.filter(
       item => selectedCategories.indexOf(item.category) !== -1
+    );
+  }
+}
+
+function applyTagsFilter(
+  itemsToFilter: Array<MarketplaceItemModel>,
+  selectedTags: Array<string>
+): Array<MarketplaceItemModel> {
+  if (selectedTags.length === 0) {
+    return itemsToFilter;
+  } else {
+    return itemsToFilter.filter(item =>
+      item.tags.some(itemTag => selectedTags.indexOf(itemTag) !== -1)
     );
   }
 }
