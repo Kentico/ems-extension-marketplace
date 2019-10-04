@@ -11,6 +11,11 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import CategoriesFilter from "./CategoriesFilter.vue";
 import SearchFilter from "./SearchFilter.vue";
 import KenticoVersionsSelector from "./KenticoVersionsSelector.vue";
+import {
+  updateSearchPhraseAction,
+  updateSelectedCategoriesAction
+} from "../store";
+import filterItems from "../utils/filter";
 
 @Component({
   components: {
@@ -25,7 +30,12 @@ export default class MarketplaceFilter extends Vue {
     const params: URLSearchParams = new URLSearchParams(queryParamsUrl);
     const searchPhrase: string = params.get("s") || "";
     const categoryFilter: string = params.get("category") || "";
-    const categoryFilterList: Array<string> = categoryFilter.split(";");
+    const categoryFilterList: Array<string> = categoryFilter
+      ? categoryFilter.split(";")
+      : [];
+    this.$store.dispatch(updateSearchPhraseAction, searchPhrase);
+    this.$store.dispatch(updateSelectedCategoriesAction, categoryFilterList);
+    filterItems();
   }
 }
 </script>
