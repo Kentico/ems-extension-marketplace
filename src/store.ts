@@ -32,6 +32,8 @@ export const updatePagerLastItemIndexMutation = "updatePagerLastItemIndex";
 
 export const initItemsStateAction = "initItemsState";
 export const addPageAction = "addPage";
+export const updateSearchPhraseAction = "updateFilterPassphrase";
+export const updateSelectedCategoriesAction = "updateSelectedCategories";
 
 Vue.use(Vuex);
 
@@ -108,11 +110,14 @@ export default new Vuex.Store({
   actions: {
     initItemsState(context, allItems) {
       context.commit(updateAllItemsMutation, allItems);
-      context.commit(updateFilteredItemsMutation, allItems);
+      performItemsFiltering();
       resetPaging();
     },
     updateFilterPassphrase(context, newSearchPhrase: string) {
       context.commit(updateFilterSearchPhraseMutation, newSearchPhrase);
+    },
+    updateSelectedCategories(context, newSelectedCategories: Array<string>) {
+      context.commit(updateSelectedCategoriesMutation, newSelectedCategories);
     },
     filterItems(_) {
       performItemsFiltering();
