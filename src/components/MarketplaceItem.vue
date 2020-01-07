@@ -39,7 +39,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 
 @Component
-export default class MarketplaceItemDetail extends Vue {
+export default class MarketplaceItem extends Vue {
   @Prop()
   private readonly item!: MarketplaceItemModel;
 
@@ -72,7 +72,7 @@ p {
   width: 100%;
   box-shadow: 0 3px 0 0 #d6d6d6;
 }
-.marketplace-item-detail-container:hover .marketplace-item {
+.marketplace-item-container:hover .marketplace-item {
   box-shadow: 0 3px 0 0 #888;
   transition: all 0.15s ease-in-out;
 }
@@ -84,7 +84,7 @@ p {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
-.marketplace-item-detail-container:hover .marketplace-item-header {
+.marketplace-item-container:hover .marketplace-item-header {
   background-color: #bdbbbb;
 }
 .marketplace-item-header__title {
@@ -126,16 +126,17 @@ p {
   display: inline-block;
   width: 70%;
 }
-.marketplace-item-detail-container:hover .btn {
+.marketplace-item-container:hover .btn {
   background-color: #42388c;
   color: #fff;
 }
 .marketplace-item-content__action {
   text-decoration: none;
   width: 87%;
+  margin: 6px 0 6px 0;
 }
 .marketplace-item-footer {
-  height: 60px;
+  height: 120px;
   background-color: #e3e3e3;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;

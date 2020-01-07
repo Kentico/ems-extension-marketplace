@@ -3,7 +3,12 @@ import App from "./App.vue";
 import VueRouter from "vue-router";
 import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
 
-const routes = [{ path: "/", component: MarketplaceListingPage }];
+const routes = [
+  {
+    path: "/",
+    component: MarketplaceListingPage
+  }
+];
 
 const router = new VueRouter({
   mode: "history",

@@ -1,8 +1,8 @@
 import { shallowMount } from "@vue/test-utils";
-import MarketplaceItemDetail from "@/components/MarketplaceItemDetail.vue";
+import MarketplaceItem from "@/components/MarketplaceItem.vue";
 import MarketplaceItemModel from "@/models/marketplaceItemModel";
 
-describe("MarketplaceItemDetail.vue", () => {
+describe("MarketplaceItem.vue", () => {
   it("renders correct containers when passed", () => {
     const item: MarketplaceItemModel = {
       name: "dummyName",
@@ -16,12 +16,12 @@ describe("MarketplaceItemDetail.vue", () => {
       tags: ["mvc", "youtube", "video", "inline-editor"]
     };
 
-    const wrapper = shallowMount(MarketplaceItemDetail, {
+    const wrapper = shallowMount(MarketplaceItem, {
       propsData: { item }
     });
     console.log(wrapper.html());
     expect(wrapper.html()).toEqual(
-`<div class="marketplace-item">
+      `<div class="marketplace-item">
   <div class="marketplace-item-header">
     <h3 class="marketplace-item-header__title"><a>dummyName</a></h3> <span class="marketplace-item-header__source">by dummySource</span>
   </div>
@@ -39,4 +39,3 @@ describe("MarketplaceItemDetail.vue", () => {
     );
   });
 });
- 

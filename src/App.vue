@@ -13,7 +13,7 @@ import MarketplaceItemModel from "./models/marketplaceItemModel";
 import store from "./store";
 
 @Component({
-  store
+  store,
 })
 export default class App extends Vue {
   beforeMount() {
