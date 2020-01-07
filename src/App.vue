@@ -1,29 +1,19 @@
 <template>
   <div id="app">
     <div class="marketplace">
-      <MarketplaceFilter />
-      <MarketplaceItemList />
-      <SubmitNewItem />
+      <router-view />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import MarketplaceItemList from "./components/MarketplaceItemList.vue";
-import SubmitNewItem from "./components/SubmitNewItem.vue";
-import MarketplaceFilter from "./components/MarketplaceFilter.vue";
 import { initItemsStateAction, initStore } from "./store";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
 import store from "./store";
 
 @Component({
-  store,
-  components: {
-    MarketplaceItemList,
-    MarketplaceFilter,
-    SubmitNewItem
-  }
+  store
 })
 export default class App extends Vue {
   beforeMount() {
