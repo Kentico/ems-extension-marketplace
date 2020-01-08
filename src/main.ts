@@ -11,7 +11,6 @@ fetch(
     "?t=" +
     new Date().valueOf()
 ).then(response => {
-  debugger;
   return response.json().then(json => {
     const allItems = json as MarketplaceItemModel[];
     allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
@@ -34,13 +33,14 @@ function initializeVue() {
     }
   ];
 
+  Vue.use(VueRouter);
+
   const router = new VueRouter({
     mode: "history",
     routes
   });
 
   Vue.config.productionTip = false;
-  Vue.use(VueRouter);
 
   new Vue({
     router,
