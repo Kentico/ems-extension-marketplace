@@ -1,12 +1,13 @@
 import Vue from "vue";
-import App from "./App.vue";
 import VueRouter from "vue-router";
+
+Vue.use(VueRouter);
+
+import App from "./App.vue";
 import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
 import MarketplaceItemDetailPage from "./components/MarketplaceItemDetailPage.vue";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
 import { initStore } from "./store";
-
-Vue.use(VueRouter);
 
 fetch(
   "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
