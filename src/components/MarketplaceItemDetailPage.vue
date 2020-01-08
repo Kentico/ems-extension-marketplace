@@ -9,26 +9,24 @@
 import { Component, Vue } from "vue-property-decorator";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 import store from "@/store";
+import { getItem } from "../utils/pathSegmentUtils";
 
 @Component
 export default class MarketplaceItemDetailPage extends Vue {
   beforeMount() {
+    const pathSegmentItemName = this.$route.params.itemName;
     const allItems = this.$store.getters.allItems as MarketplaceItemModel[];
-    if (this.getItem() === null) {
+
+    // cannot find item related to path segment
+    if (getItem(pathSegmentItemName, allItems) === null) {
       this.$router.push("/");
     }
   }
 
   get item(): MarketplaceItemModel | null {
+    const pathSegmentItemName = this.$route.params.itemName;
     const allItems = this.$store.getters.allItems as MarketplaceItemModel[];
-    return this.getItem();
-  }
-
-  getItem(): MarketplaceItemModel | null {
-    const itemName = this.$route.params.itemName;
-    const allItems = this.$store.getters.allItems as MarketplaceItemModel[];
-    const item = allItems.find(i => i.name === "Dynamic Routing (MVC Only)");
-    return item ? item : null;
+    return getItem(pathSegmentItemName, allItems);
   }
 }
 </script>
