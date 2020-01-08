@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="marketplace">
-      <router-view />
+      <router-view></router-view>
     </div>
   </div>
 </template>
