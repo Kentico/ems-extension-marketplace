@@ -6,6 +6,8 @@ import MarketplaceItemDetailPage from "./components/MarketplaceItemDetailPage.vu
 import MarketplaceItemModel from "./models/marketplaceItemModel";
 import { initStore } from "./store";
 
+Vue.use(VueRouter);
+
 fetch(
   "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
     "?t=" +
@@ -32,8 +34,6 @@ function initializeVue() {
       component: MarketplaceItemDetailPage
     }
   ];
-
-  Vue.use(VueRouter);
 
   const router = new VueRouter({
     mode: "history",
