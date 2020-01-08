@@ -2,23 +2,48 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
 import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
+import MarketplaceItemDetailPage from "./components/MarketplaceItemDetailPage.vue";
+import MarketplaceItemModel from "./models/marketplaceItemModel";
+import { initStore } from "./store";
 
-const routes = [
-  {
-    path: "/",
-    component: MarketplaceListingPage
-  }
-];
-
-const router = new VueRouter({
-  mode: "history",
-  routes
+fetch(
+  "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
+    "?t=" +
+    new Date().valueOf()
+).then(response => {
+  debugger;
+  return response.json().then(json => {
+    const allItems = json as MarketplaceItemModel[];
+    allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
+      a.name.localeCompare(b.name)
+    );
+    initStore(allItems);
+    initializeVue();
+  });
 });
 
-Vue.config.productionTip = false;
-Vue.use(VueRouter);
+function initializeVue() {
+  const routes = [
+    {
+      path: "/",
+      component: MarketplaceListingPage
+    },
+    {
+      path: "/:itemName",
+      component: MarketplaceItemDetailPage
+    }
+  ];
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+  const router = new VueRouter({
+    mode: "history",
+    routes
+  });
+
+  Vue.config.productionTip = false;
+  Vue.use(VueRouter);
+
+  new Vue({
+    router,
+    render: h => h(App)
+  }).$mount("#app");
+}

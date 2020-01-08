@@ -13,25 +13,9 @@ import MarketplaceItemModel from "./models/marketplaceItemModel";
 import store from "./store";
 
 @Component({
-  store,
+  store
 })
-export default class App extends Vue {
-  beforeMount() {
-    fetch(
-      "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
-        "?t=" +
-        new Date().valueOf()
-    ).then(response => {
-      return response.json().then(json => {
-        const allItems = json as MarketplaceItemModel[];
-        allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
-          a.name.localeCompare(b.name)
-        );
-        initStore(allItems);
-      });
-    });
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style scoped lang="scss">

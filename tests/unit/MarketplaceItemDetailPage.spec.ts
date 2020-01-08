@@ -19,7 +19,6 @@ describe("MarketplaceItem.vue", () => {
     const wrapper = shallowMount(MarketplaceItem, {
       propsData: { item }
     });
-    console.log(wrapper.html());
     expect(wrapper.html()).toEqual(
       `<div class="marketplace-item">
   <div class="marketplace-item-header">
