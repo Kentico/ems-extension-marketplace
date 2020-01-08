@@ -33,6 +33,8 @@ describe("MarketplaceItem.vue", () => {
   </div>
   <div class="marketplace-item-footer"><button data-tracking-label="dummyName" href="https://localhost.local" class="btn marketplace-item-content__action">
       Take me to the Project
+    </button> <button href="https://localhost.local" class="btn marketplace-item-content__action">
+      Learn more
     </button></div>
 </div>`
     );

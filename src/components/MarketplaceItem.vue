@@ -30,6 +30,13 @@
       >
         Take me to the Project
       </button>
+      <button
+        v-on:click="$router.push(itemPathSegment)"
+        v-bind:href="item.sourceUrl"
+        class="btn marketplace-item-content__action"
+      >
+        Learn more
+      </button>
     </div>
   </div>
 </template>
@@ -37,6 +44,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
+import { getPathSegmentFromItemName } from "@/utils/pathSegmentUtils";
 
 @Component
 export default class MarketplaceItem extends Vue {
@@ -47,6 +55,10 @@ export default class MarketplaceItem extends Vue {
     return this.item.description.length <= 160
       ? this.item.description
       : `${this.item.description.slice(0, 160)}...`;
+  }
+
+  get itemPathSegment() {
+    return getPathSegmentFromItemName(this.item.name);
   }
 
   goToProject(item: MarketplaceItemModel): void {
