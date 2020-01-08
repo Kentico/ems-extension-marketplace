@@ -82,7 +82,7 @@ p {
 }
 .marketplace-item {
   width: 100%;
-  box-shadow: 0 3px 0 0 #d6d6d6;
+  box-shadow: 0 3px 0 0 var(--background-secondary-color);
 }
 .marketplace-item-container:hover .marketplace-item {
   box-shadow: 0 3px 0 0 #888;
@@ -91,7 +91,7 @@ p {
 .marketplace-item-header {
   height: 74px;
   text-transform: none;
-  background-color: #d6d6d6;
+  background-color: var(--background-secondary-color);
   padding: 12px 20px 12px 20px;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -116,12 +116,12 @@ p {
   text-align: left;
 }
 .marketplace-item-header__source > a {
-  color: #262524;
+  color: var(--text-primary-color);
   float: left;
 }
 .marketplace-item-content {
   padding: 12px 20px 12px 20px;
-  background-color: #e3e3e3;
+  background-color: var(--background-primary-color);
 }
 .marketplace-item-content__description {
   overflow: hidden;
@@ -148,8 +148,8 @@ p {
   margin: 6px 0 6px 0;
 }
 .marketplace-item-footer {
-  height: 120px;
-  background-color: #e3e3e3;
+  height: 60px;
+  background-color: var(--background-primary-color);
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }

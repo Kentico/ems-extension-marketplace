@@ -25,6 +25,12 @@ export default class App extends Vue {}
 </style>
 
 <style lang="scss">
+@import './styles/variables.css';
+
+h2 {
+  font-size: 30px;
+  line-height: 1.3;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -44,7 +50,7 @@ export default class App extends Vue {}
   user-select: none;
   text-decoration: none;
   color: #262524;
-  background-color: #d6d6d6;
+  background-color: var(--background-secondary-color);
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
@@ -65,8 +71,8 @@ export default class App extends Vue {}
 }
 .btn--common {
   color: #262524;
-  background-color: #e3e3e3;
-  border-color: #e3e3e3;
-  box-shadow: 0 3px 0 0 #d6d6d6;
+  background-color: var(--background-primary-color);
+  border-color: var(--background-primary-color);
+  box-shadow: 0 3px 0 0 var(--background-secondary-color);
 }
 </style>

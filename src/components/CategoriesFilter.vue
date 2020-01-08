@@ -52,7 +52,7 @@ export default class CategoriesFilter extends Vue {
 .category-caption {
   display: inline-block;
   border-radius: 4px;
-  background-color: #d6d6d6;
+  background-color: var(--background-secondary-color);
   color: #282828;
   padding: 6px 10px;
   font-size: 16px;

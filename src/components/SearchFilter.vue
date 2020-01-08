@@ -67,7 +67,7 @@ export default class SearchFilter extends Vue {
   font-size: 14px;
   width: 246px;
   height: 40px;
-  color: #262524;
+  color: var(--text-primary-color);
   vertical-align: middle;
   background-color: #fff;
   padding: 7px 10px;
