@@ -25,7 +25,7 @@ export default class App extends Vue {}
 </style>
 
 <style lang="scss">
-@import "./styles/variables.css";
+@import './styles/variables.css';
 
 h2 {
   font-size: 30px;
@@ -49,7 +49,7 @@ h2 {
   border-radius: 4px;
   user-select: none;
   text-decoration: none;
-  color: #262524;
+  color: var(--text-primary-color);
   background-color: var(--background-secondary-color);
   font-weight: 400;
   text-align: center;
@@ -70,7 +70,7 @@ h2 {
   width: 100%;
 }
 .btn--common {
-  color: #262524;
+  color: var(--text-primary-color);
   background-color: var(--background-primary-color);
   border-color: var(--background-primary-color);
   box-shadow: 0 3px 0 0 var(--background-secondary-color);
