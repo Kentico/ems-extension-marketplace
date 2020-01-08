@@ -23,14 +23,6 @@
     </div>
     <div class="marketplace-item-footer">
       <button
-        v-on:click="goToProject(item)"
-        v-bind:data-tracking-label="item.name"
-        v-bind:href="item.sourceUrl"
-        class="btn marketplace-item-content__action"
-      >
-        Take me to the Project
-      </button>
-      <button
         v-on:click="$router.push(itemPathSegment)"
         v-bind:href="item.sourceUrl"
         class="btn marketplace-item-content__action"
@@ -59,19 +51,6 @@ export default class MarketplaceItem extends Vue {
 
   get itemPathSegment() {
     return getPathSegmentFromItemName(this.item.name);
-  }
-
-  goToProject(item: MarketplaceItemModel): void {
-    if (window && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        event: "event",
-        eventCategory: "Link",
-        eventAction: "open-marketplace-extension",
-        eventLabel: `${item.category};${item.name}`
-      });
-    }
-
-    window.open(item.sourceUrl, "_blank");
   }
 }
 </script>

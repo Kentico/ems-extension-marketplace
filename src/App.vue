@@ -25,7 +25,7 @@ export default class App extends Vue {}
 </style>
 
 <style lang="scss">
-@import './styles/variables.css';
+@import "./styles/variables.css";
 
 h2 {
   font-size: 30px;

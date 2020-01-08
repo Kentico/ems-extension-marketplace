@@ -1,7 +1,49 @@
 <template>
-  <div>
-    <div>{{ item.name }}</div>
-    <div>{{ item.description }}</div>
+  <div class="detail-page">
+    <div class="heading-container">
+      <div class="title">
+        <h2>{{ item.name }}</h2>
+      </div>
+      <div class="author">by {{ item.author }}</div>
+    </div>
+    <div class="content-container">
+      <div class="left-panel">
+        <div class="thumbnail-container">
+          <img v-bind:src="item.thumbnailUrl" />
+        </div>
+        <div class="categories-container">
+          <h3>Category</h3>
+          <p>{{ item.category }}</p>
+        </div>
+        <button
+          v-on:click="goToProject(item)"
+          v-bind:data-tracking-label="item.name"
+          v-bind:href="item.sourceUrl"
+          class="btn item-action-button"
+        >
+          Take me to the Project
+        </button>
+      </div>
+      <div class="right-panel">
+        <div class="description-container">
+          <h3>Description</h3>
+          <p>{{ item.description }}</p>
+        </div>
+        <div class="kentico-versions-container">
+          <h3>Works with Kentico versions</h3>
+          <span
+            v-for="version in item.kenticoVersions"
+            v-bind:key="version"
+            class="version-caption"
+            >{{ version }}</span
+          >
+        </div>
+        <div class="version-container">
+          <h3>Version</h3>
+          <p>{{ item.version }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,5 +70,89 @@ export default class MarketplaceItemDetailPage extends Vue {
     const allItems = this.$store.getters.allItems as MarketplaceItemModel[];
     return getItem(pathSegmentItemName, allItems);
   }
+
+  goToProject(item: MarketplaceItemModel): void {
+    if (window && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: "event",
+        eventCategory: "Link",
+        eventAction: "open-marketplace-extension",
+        eventLabel: `${item.category};${item.name}`
+      });
+    }
+
+    window.open(item.sourceUrl, "_blank");
+  }
 }
 </script>
+
+<style scoped lang="scss">
+h3 {
+  margin-bottom: 0px;
+  color: var(--text-primary-color);
+}
+p {
+  margin-top: 4px;
+  color: var(--text-primary-color);
+}
+.detail-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  border-radius: 4px;
+}
+.heading-container {
+  background-color: var(--background-secondary-color);
+  width: 100%;
+  text-align: left;
+  padding-left: 12px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.title h2 {
+  margin: 5px 0;
+  color: var(--text-primary-color);
+}
+.author {
+  font-size: 16px;
+}
+.content-container {
+  display: flex;
+  width: 100%;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.left-panel {
+  width: 33%;
+}
+.right-panel {
+  width: 77%;
+  text-align: left;
+}
+.thumbnail-container {
+  margin: 20px 0 10px 0;
+}
+.description-container {
+  margin-top: 20px;
+}
+.item-action-button {
+  margin: 10px 0 10px 0;
+}
+.version-caption {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: var(--background-secondary-color);
+  color: #282828;
+  padding: 6px 10px;
+  font-size: 16px;
+  text-align: center;
+  margin: 4px 6px 2px 0;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+</style>

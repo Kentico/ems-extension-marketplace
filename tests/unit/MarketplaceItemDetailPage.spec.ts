@@ -31,9 +31,7 @@ describe("MarketplaceItem.vue", () => {
     <div class="marketplace-item-content__preview-image"><a href="https://localhost.local"><img src="https://localhost.local/thumbnailUrl.png" alt="dummyName" style="width: 100px; height: 100px;"></a></div>
     <div class="marketplace-item-content__statistics"></div>
   </div>
-  <div class="marketplace-item-footer"><button data-tracking-label="dummyName" href="https://localhost.local" class="btn marketplace-item-content__action">
-      Take me to the Project
-    </button> <button href="https://localhost.local" class="btn marketplace-item-content__action">
+  <div class="marketplace-item-footer"><button href="https://localhost.local" class="btn marketplace-item-content__action">
       Learn more
     </button></div>
 </div>`
