@@ -60,7 +60,7 @@ p {
   margin: 0 0 24px;
 }
 .marketplace-item {
-  width: 100%;
+  width: 290px;
   box-shadow: 0 3px 0 0 var(--background-secondary-color);
 }
 .marketplace-item-container:hover .marketplace-item {
