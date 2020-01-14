@@ -8,14 +8,40 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { initItemsStateAction, initStore } from "./store";
+
+Component.registerHooks(["beforeRouteEnter"]);
+
+import { initItemsStateAction } from "./store";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
 import store from "./store";
+import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
+import Vuex from "vuex";
+import VueRouter from "vue-router";
+import MarketplaceItemDetailPage from './components/MarketplaceItemDetailPage.vue';
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from './constants/routes';
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+  mode: "history",
+  routes: [
+    {
+      path: MARKETPLACE_ROOT_PATH_SEGMENT,
+      component: MarketplaceListingPage
+    },
+    {
+      path: `${MARKETPLACE_ROOT_PATH_SEGMENT}/:itemName`,
+      component: MarketplaceItemDetailPage
+    }
+  ]
+});
 
 @Component({
-  store
+  store,
+  router
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+}
 </script>
 
 <style scoped lang="scss">
@@ -25,7 +51,7 @@ export default class App extends Vue {}
 </style>
 
 <style lang="scss">
-@import './styles/variables.css';
+@import "./styles/variables.css";
 
 h2 {
   font-size: 30px;

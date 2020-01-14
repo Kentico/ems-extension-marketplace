@@ -20,9 +20,7 @@
           v-bind:data-tracking-label="item.name"
           v-bind:href="item.sourceUrl"
           class="btn item-action-button"
-        >
-          Take me to the Project
-        </button>
+        >Take me to the Project</button>
       </div>
       <div class="right-panel">
         <div class="description-container">
@@ -35,8 +33,7 @@
             v-for="version in item.kenticoVersions"
             v-bind:key="version"
             class="version-caption"
-            >{{ version }}</span
-          >
+          >{{ version }}</span>
         </div>
         <div class="version-container">
           <h3>Version</h3>
@@ -49,19 +46,26 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
+Component.registerHooks(["beforeRouteEnter"]);
+
 import MarketplaceItemModel from "../models/marketplaceItemModel";
-import store from "@/store";
+import store, { initializeStoreWithItemsAndNavigateNext } from "@/store";
 import { getItem } from "../utils/pathSegmentUtils";
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from "@/constants/routes";
 
 @Component
 export default class MarketplaceItemDetailPage extends Vue {
+  beforeRouteEnter(to: any, from: any, next: any) {
+    initializeStoreWithItemsAndNavigateNext(next);
+  }
   beforeMount() {
     const pathSegmentItemName = this.$route.params.itemName;
     const allItems = this.$store.getters.allItems as MarketplaceItemModel[];
 
     // cannot find item related to path segment
     if (getItem(pathSegmentItemName, allItems) === null) {
-      this.$router.push("/");
+      this.$router.push(MARKETPLACE_ROOT_PATH_SEGMENT);
     }
   }
 

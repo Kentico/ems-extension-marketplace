@@ -37,6 +37,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 import { getPathSegmentFromItemName } from "@/utils/pathSegmentUtils";
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from '@/constants/routes';
 
 @Component
 export default class MarketplaceItem extends Vue {
@@ -49,8 +50,8 @@ export default class MarketplaceItem extends Vue {
       : `${this.item.description.slice(0, 160)}...`;
   }
 
-  get itemPathSegment() {
-    return getPathSegmentFromItemName(this.item.name);
+  get itemPathSegment(): string {
+    return `${MARKETPLACE_ROOT_PATH_SEGMENT}/${getPathSegmentFromItemName(this.item.name)}`
   }
 }
 </script>

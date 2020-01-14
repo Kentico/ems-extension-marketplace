@@ -37,6 +37,24 @@ export const updateSelectedCategoriesAction = "updateSelectedCategories";
 
 Vue.use(Vuex);
 
+export async function initializeStoreWithItemsAndNavigateNext(next: any) 
+{
+  await fetch(
+    "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
+    "?t=" +
+    new Date().valueOf()
+  ).then(async (response) => {
+    return response.json().then(json => {
+      const allItems = json as MarketplaceItemModel[];
+      allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
+        a.name.localeCompare(b.name)
+      );
+      initStore(allItems);
+      next();
+    });
+  });
+}
+
 export function initStore(allItems: Array<MarketplaceItemModel>) {
   initStoreWithItems(allItems);
   initStoreWithTags(allItems);

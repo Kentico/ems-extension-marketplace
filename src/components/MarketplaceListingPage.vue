@@ -8,9 +8,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
+Component.registerHooks(["beforeRouteEnter"]);
+
 import MarketplaceItemList from "./MarketplaceItemList.vue";
 import SubmitNewItem from "./SubmitNewItem.vue";
 import MarketplaceFilter from "./MarketplaceFilter.vue";
+import { initializeStoreWithItemsAndNavigateNext } from "@/store";
 
 @Component({
   components: {
@@ -19,5 +23,9 @@ import MarketplaceFilter from "./MarketplaceFilter.vue";
     SubmitNewItem
   }
 })
-export default class MarketplaceListingPage extends Vue {}
+export default class MarketplaceListingPage extends Vue {
+  beforeRouteEnter(to: any, from: any, next: any) {
+    initializeStoreWithItemsAndNavigateNext(next);
+  }
+}
 </script>
