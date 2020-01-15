@@ -17,8 +17,8 @@ import store from "./store";
 import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import MarketplaceItemDetailPage from './components/MarketplaceItemDetailPage.vue';
-import { MARKETPLACE_ROOT_PATH_SEGMENT } from './constants/routes';
+import MarketplaceItemDetailPage from "./components/MarketplaceItemDetailPage.vue";
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from "./constants/routes";
 
 Vue.use(VueRouter);
 
@@ -40,8 +40,7 @@ const router = new VueRouter({
   store,
   router
 })
-export default class App extends Vue {
-}
+export default class App extends Vue {}
 </script>
 
 <style scoped lang="scss">
@@ -51,7 +50,7 @@ export default class App extends Vue {
 </style>
 
 <style lang="scss">
-@import "./styles/variables.css";
+@import "./styles/variables.scss";
 
 h2 {
   font-size: 30px;
@@ -75,8 +74,8 @@ h2 {
   border-radius: 4px;
   user-select: none;
   text-decoration: none;
-  color: var(--text-primary-color);
-  background-color: var(--background-secondary-color);
+  color: $text-primary-color;
+  background-color: $bg-secondary-color;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
@@ -96,9 +95,9 @@ h2 {
   width: 100%;
 }
 .btn--common {
-  color: var(--text-primary-color);
-  background-color: var(--background-primary-color);
-  border-color: var(--background-primary-color);
-  box-shadow: 0 3px 0 0 var(--background-secondary-color);
+  color: $text-primary-color;
+  background-color: $bg-primary-color;
+  border-color: $bg-primary-color;
+  box-shadow: 0 3px 0 0 $bg-secondary-color;
 }
 </style>

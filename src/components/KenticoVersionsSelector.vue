@@ -85,6 +85,7 @@ Vue.directive("click-outside", {
   margin: 4px 10px 4px 0;
   cursor: pointer;
 }
+
 .selected {
   position: relative;
   display: flex;

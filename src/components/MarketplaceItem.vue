@@ -37,7 +37,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 import { getPathSegmentFromItemName } from "@/utils/pathSegmentUtils";
-import { MARKETPLACE_ROOT_PATH_SEGMENT } from '@/constants/routes';
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from "@/constants/routes";
 
 @Component
 export default class MarketplaceItem extends Vue {
@@ -51,18 +51,22 @@ export default class MarketplaceItem extends Vue {
   }
 
   get itemPathSegment(): string {
-    return `${MARKETPLACE_ROOT_PATH_SEGMENT}/${getPathSegmentFromItemName(this.item.name)}`
+    return `${MARKETPLACE_ROOT_PATH_SEGMENT}/${getPathSegmentFromItemName(
+      this.item.name
+    )}`;
   }
 }
 </script>
 
 <style scoped lang="scss">
+@import "../styles/variables.scss";
+
 p {
   margin: 0 0 24px;
 }
 .marketplace-item {
   width: 290px;
-  box-shadow: 0 3px 0 0 var(--background-secondary-color);
+  box-shadow: 0 3px 0 0 $bg-secondary-color;
 }
 .marketplace-item-container:hover .marketplace-item {
   box-shadow: 0 3px 0 0 #888;
@@ -71,7 +75,7 @@ p {
 .marketplace-item-header {
   height: 74px;
   text-transform: none;
-  background-color: var(--background-secondary-color);
+  background-color: $bg-secondary-color;
   padding: 12px 20px 12px 20px;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -79,6 +83,7 @@ p {
 .marketplace-item-container:hover .marketplace-item-header {
   background-color: #bdbbbb;
 }
+
 .marketplace-item-header__title {
   font-size: 16px;
   text-align: left;
@@ -96,12 +101,12 @@ p {
   text-align: left;
 }
 .marketplace-item-header__source > a {
-  color: var(--text-primary-color);
+  color: $text-primary-color;
   float: left;
 }
 .marketplace-item-content {
   padding: 12px 20px 12px 20px;
-  background-color: var(--background-primary-color);
+  background-color: $bg-primary-color;
 }
 .marketplace-item-content__description {
   overflow: hidden;
@@ -129,7 +134,7 @@ p {
 }
 .marketplace-item-footer {
   height: 60px;
-  background-color: var(--background-primary-color);
+  background-color: $bg-primary-color;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }

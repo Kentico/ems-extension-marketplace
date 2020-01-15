@@ -23,15 +23,18 @@ export default class SubmitNewItem extends Vue {}
 </script>
 
 <style scoped lang="scss">
+@import "../styles/variables.scss";
+
 .submit-new-item-section {
   min-height: 165px;
   width: 100%;
   box-sizing: border-box;
   border-radius: 4px;
   padding: 0 20px;
-  background-color: var(--background-primary-color);
+  background-color: $bg-primary-color;
   color: #696663;
 }
+
 .submit-new-item-section__heading {
   margin-top: 1em;
   font-size: 16px;

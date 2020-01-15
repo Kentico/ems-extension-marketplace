@@ -20,7 +20,9 @@
           v-bind:data-tracking-label="item.name"
           v-bind:href="item.sourceUrl"
           class="btn item-action-button"
-        >Take me to the Project</button>
+        >
+          Take me to the Project
+        </button>
       </div>
       <div class="right-panel">
         <div class="description-container">
@@ -33,7 +35,8 @@
             v-for="version in item.kenticoVersions"
             v-bind:key="version"
             class="version-caption"
-          >{{ version }}</span>
+            >{{ version }}</span
+          >
         </div>
         <div class="version-container">
           <h3>Version</h3>
@@ -91,13 +94,15 @@ export default class MarketplaceItemDetailPage extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "../styles/variables.scss";
+
 h3 {
   margin-bottom: 0px;
-  color: var(--text-primary-color);
+  color: $text-primary-color;
 }
 p {
   margin-top: 4px;
-  color: var(--text-primary-color);
+  color: $text-primary-color;
 }
 .detail-page {
   display: flex;
@@ -107,7 +112,7 @@ p {
   border-radius: 4px;
 }
 .heading-container {
-  background-color: var(--background-secondary-color);
+  background-color: $bg-secondary-color;
   width: 100%;
   text-align: left;
   padding-left: 12px;
@@ -116,7 +121,7 @@ p {
 }
 .title h2 {
   margin: 5px 0;
-  color: var(--text-primary-color);
+  color: $text-primary-color;
 }
 .author {
   font-size: 16px;
@@ -143,10 +148,11 @@ p {
 .item-action-button {
   margin: 10px 0 10px 0;
 }
+
 .version-caption {
   display: inline-block;
   border-radius: 4px;
-  background-color: var(--background-secondary-color);
+  background-color: $bg-secondary-color;
   color: #282828;
   padding: 6px 10px;
   font-size: 16px;

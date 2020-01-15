@@ -47,6 +47,7 @@ export default class MarketplaceItemList extends Vue {
   justify-content: flex-start;
   flex-flow: row wrap;
 }
+
 .marketplace-item-container {
   max-width: 290px;
   margin: 0 10px 18px 0;

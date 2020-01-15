@@ -46,13 +46,15 @@ export default class CategoriesFilter extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "../styles/variables.scss";
+
 .categories-filter {
   margin: 4px 10px 4px 4px;
 }
 .category-caption {
   display: inline-block;
   border-radius: 4px;
-  background-color: var(--background-secondary-color);
+  background-color: $bg-secondary-color;
   color: #282828;
   padding: 6px 10px;
   font-size: 16px;
