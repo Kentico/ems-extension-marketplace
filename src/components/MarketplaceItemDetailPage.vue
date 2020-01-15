@@ -19,7 +19,7 @@
           v-on:click="goToProject(item)"
           v-bind:data-tracking-label="item.name"
           v-bind:href="item.sourceUrl"
-          class="btn item-action-button"
+          class="btn btn--cta item-action-button"
         >
           Take me to the Project
         </button>
@@ -120,23 +120,26 @@ p {
   border-top-right-radius: 4px;
 }
 .title h2 {
-  margin: 5px 0;
+  margin: 12px 0 0 0;
   color: $text-primary-color;
 }
 .author {
   font-size: 16px;
+  margin: 12px 0 12px 0;
 }
 .content-container {
   display: flex;
   width: 100%;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
+  background-color: $bg-primary-color;
+  padding: 12px 0 4px 0;
 }
 .left-panel {
-  width: 33%;
+  width: 40%;
 }
 .right-panel {
-  width: 77%;
+  width: 60%;
   text-align: left;
 }
 .thumbnail-container {
@@ -144,6 +147,10 @@ p {
 }
 .description-container {
   margin-top: 20px;
+}
+.categories-container {
+    text-align: left;
+    padding-left: 12px;
 }
 .item-action-button {
   margin: 10px 0 10px 0;

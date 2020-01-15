@@ -84,8 +84,17 @@ h2 {
   transition: all 0.15s ease-in-out;
   width: 71%;
 }
-.btn:hover {
+
+.btn--cta {
   background-color: #42388c;
+  color: white;
+  width: 95%;
+}
+.btn--cta:hover {
+  background-color: #282255;
+}
+.btn:hover {
+  background-color: #282255;
   color: #fff;
 }
 .btn:focus {
