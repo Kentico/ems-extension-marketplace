@@ -10,7 +10,7 @@
     "watch": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\" --watch",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "copy:info": " cpx -v public/INFO.md \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\"",
+    "copy:info": " cpx -v public/INFO.md \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\""
   },
   "dependencies": {
     "core-js": "^3.6.1",
