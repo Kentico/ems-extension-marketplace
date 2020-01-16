@@ -71,6 +71,11 @@ export default class MarketplaceItemDetailPage extends Vue {
       this.$router.push(MARKETPLACE_ROOT_PATH_SEGMENT);
     }
   }
+  created () {
+    const renderedItem = this.item!;
+    document.title = renderedItem.name;
+    (document.head.querySelector('meta[name="description"]') as any).content = renderedItem.description;
+  }
 
   get item(): MarketplaceItemModel | null {
     const pathSegmentItemName = this.$route.params.itemName;
