@@ -66,16 +66,23 @@ export default class MarketplaceItemDetailPage extends Vue {
     const pathSegmentItemName = this.$route.params.itemName;
     const allItems = this.$store.getters.allItems as MarketplaceItemModel[];
 
+    const renderedItem = this.item!;
+    document.title = renderedItem.name;
+    var metaElement = document.createElement('meta');
+    metaElement.setAttribute('name', 'description');
+    metaElement.setAttribute('content', renderedItem.description);
+    document.getElementsByTagName('head')[0].appendChild(metaElement);
+
     // cannot find item related to path segment
     if (getItem(pathSegmentItemName, allItems) === null) {
       this.$router.push(MARKETPLACE_ROOT_PATH_SEGMENT);
     }
   }
-  created () {
-    const renderedItem = this.item!;
-    document.title = renderedItem.name;
-    (document.head.querySelector('meta[name="description"]') as any).content = renderedItem.description;
-  }
+  // created () {
+  //   const renderedItem = this.item!;
+  //   document.title = renderedItem.name;
+  //   (document.head.querySelector('meta[name="description"]') as any).content = renderedItem.description;
+  // }
 
   get item(): MarketplaceItemModel | null {
     const pathSegmentItemName = this.$route.params.itemName;
