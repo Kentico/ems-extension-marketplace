@@ -56,6 +56,8 @@ import MarketplaceItemModel from "../models/marketplaceItemModel";
 import store, { initializeStoreWithItemsAndNavigateNext } from "@/store";
 import { getItem } from "../utils/pathSegmentUtils";
 import { MARKETPLACE_ROOT_PATH_SEGMENT } from "@/constants/routes";
+import { TrackingEventType } from "../models/TrackingEventType";
+import { trackItemEvent } from "../utils/analyticsUtils";
 
 @Component
 export default class MarketplaceItemDetailPage extends Vue {
@@ -68,21 +70,16 @@ export default class MarketplaceItemDetailPage extends Vue {
 
     const renderedItem = this.item!;
     document.title = renderedItem.name;
-    var metaElement = document.createElement('meta');
-    metaElement.setAttribute('name', 'description');
-    metaElement.setAttribute('content', renderedItem.description);
-    document.getElementsByTagName('head')[0].appendChild(metaElement);
+    var metaElement = document.createElement("meta");
+    metaElement.setAttribute("name", "description");
+    metaElement.setAttribute("content", renderedItem.description);
+    document.getElementsByTagName("head")[0].appendChild(metaElement);
 
     // cannot find item related to path segment
     if (getItem(pathSegmentItemName, allItems) === null) {
       this.$router.push(MARKETPLACE_ROOT_PATH_SEGMENT);
     }
   }
-  // created () {
-  //   const renderedItem = this.item!;
-  //   document.title = renderedItem.name;
-  //   (document.head.querySelector('meta[name="description"]') as any).content = renderedItem.description;
-  // }
 
   get item(): MarketplaceItemModel | null {
     const pathSegmentItemName = this.$route.params.itemName;
@@ -91,15 +88,7 @@ export default class MarketplaceItemDetailPage extends Vue {
   }
 
   goToProject(item: MarketplaceItemModel): void {
-    if (window && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        event: "event",
-        eventCategory: "Link",
-        eventAction: "open-marketplace-extension",
-        eventLabel: `${item.category};${item.name}`
-      });
-    }
-
+    trackItemEvent(TrackingEventType.NavigateToExtensionProject, item);
     window.open(item.sourceUrl, "_blank");
   }
 }
@@ -109,7 +98,7 @@ export default class MarketplaceItemDetailPage extends Vue {
 @import "../styles/variables.scss";
 
 h3 {
-  margin-bottom: 0px;
+  margin-bottom: 0px !important;
   color: $text-primary-color;
 }
 p {
@@ -161,8 +150,8 @@ p {
   margin-top: 20px;
 }
 .categories-container {
-    text-align: left;
-    padding-left: 12px;
+  text-align: left;
+  padding-left: 12px;
 }
 .item-action-button {
   margin: 10px 0 10px 0;

@@ -1,4 +1,4 @@
-import MarketplaceItemModel from "@/models/marketplaceItemModel";
+import MarketplaceItemModel from "@/models/MarketplaceItemModel";
 import store, {
   updateCategoriesMutation,
   updateSelectedCategoriesMutation

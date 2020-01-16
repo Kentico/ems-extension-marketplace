@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import MarketplaceItemModel from "./models/marketplaceItemModel";
+import MarketplaceItemModel from "./models/MarketplaceItemModel";
 import performItemsFiltering from "./utils/filter";
 import { resetPaging, addNextPage } from "./utils/pager";
 import CategoryModel from "./models/CategoryModel";

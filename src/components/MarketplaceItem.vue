@@ -23,7 +23,7 @@
     </div>
     <div class="marketplace-item-footer">
       <button
-        v-on:click="$router.push(itemPathSegment)"
+        v-on:click="goToProject(item)"
         v-bind:href="item.sourceUrl"
         class="btn marketplace-item-content__action"
       >
@@ -38,6 +38,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 import { getPathSegmentFromItemName } from "@/utils/pathSegmentUtils";
 import { MARKETPLACE_ROOT_PATH_SEGMENT } from "@/constants/routes";
+import { trackItemEvent } from "@/utils/analyticsUtils";
+import { TrackingEventType } from "@/models/TrackingEventType";
 
 @Component
 export default class MarketplaceItem extends Vue {
@@ -50,10 +52,15 @@ export default class MarketplaceItem extends Vue {
       : `${this.item.description.slice(0, 160)}...`;
   }
 
-  get itemPathSegment(): string {
+  getItemPathSegment(): string {
     return `${MARKETPLACE_ROOT_PATH_SEGMENT}/${getPathSegmentFromItemName(
       this.item.name
     )}`;
+  }
+
+  goToProject(item: MarketplaceItemModel): void {
+    trackItemEvent(TrackingEventType.OpenMarketplaceExtensionDetail, item);
+    this.$router.push(this.getItemPathSegment());
   }
 }
 </script>

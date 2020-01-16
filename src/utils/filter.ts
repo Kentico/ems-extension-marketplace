@@ -1,5 +1,5 @@
 import store, { updateFilteredItemsMutation } from "@/store";
-import MarketplaceItemModel from "@/models/marketplaceItemModel";
+import MarketplaceItemModel from "@/models/MarketplaceItemModel";
 import { resetPaging } from "./pager";
 import { KENTICO_VERSION_ALL_VERSIONS } from "./kenticoVersions";
 
