@@ -98,7 +98,7 @@ export default class MarketplaceItemDetailPage extends Vue {
 @import "../styles/variables.scss";
 
 h3 {
-  margin-bottom: 0px !important;
+  margin-bottom: 0px;
   color: $text-primary-color;
 }
 p {
