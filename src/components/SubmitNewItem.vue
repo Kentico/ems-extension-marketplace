@@ -31,7 +31,6 @@ export default class SubmitNewItem extends Vue {}
   box-sizing: border-box;
   border-radius: 4px;
   padding: 0 20px;
-  background-color: $bg-primary-color;
   color: #696663;
 }
 
