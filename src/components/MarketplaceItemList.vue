@@ -21,7 +21,7 @@ import store, {
   updateFilteredItemsMutation,
   addPageAction
 } from "./../store";
-import MarketplaceItemModel from "../models/marketplaceItemModel";
+import MarketplaceItemModel from "../models/MarketplaceItemModel";
 import { addNextPage } from "../utils/pager";
 import LoadMoreButton from "./LoadMoreButton.vue";
 

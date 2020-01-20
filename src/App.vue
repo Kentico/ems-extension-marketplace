@@ -12,7 +12,7 @@ import { Component, Vue } from "vue-property-decorator";
 Component.registerHooks(["beforeRouteEnter"]);
 
 import { initItemsStateAction } from "./store";
-import MarketplaceItemModel from "./models/marketplaceItemModel";
+import MarketplaceItemModel from "./models/MarketplaceItemModel";
 import store from "./store";
 import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
 import Vuex from "vuex";

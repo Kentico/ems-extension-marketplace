@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import MarketplaceItemModel from "../models/marketplaceItemModel";
+import MarketplaceItemModel from "../models/MarketplaceItemModel";
 import { getPathSegmentFromItemName } from "./..//utils/pathSegmentUtils";
 import { MARKETPLACE_ROOT_PATH_SEGMENT } from "./../constants/routes";
 import { trackItemEvent } from "./../utils/analyticsUtils";

@@ -52,7 +52,7 @@ import { Component, Vue } from "vue-property-decorator";
 
 Component.registerHooks(["beforeRouteEnter"]);
 
-import MarketplaceItemModel from "../models/marketplaceItemModel";
+import MarketplaceItemModel from "../models/MarketplaceItemModel";
 import store, { initializeStoreWithItemsAndNavigateNext } from "./../store";
 import { getItem } from "../utils/pathSegmentUtils";
 import { MARKETPLACE_ROOT_PATH_SEGMENT } from "./../constants/routes";
