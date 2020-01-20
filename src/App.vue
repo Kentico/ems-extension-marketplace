@@ -88,7 +88,7 @@ h2 {
 .btn--cta {
   background-color: #42388c;
   color: white;
-  width: 95%;
+  width: 100%;
 }
 .btn--cta:hover {
   background-color: #282255;

@@ -15,14 +15,14 @@
           <h3>Category</h3>
           <p>{{ item.category }}</p>
         </div>
-        <button
-          v-on:click="goToProject(item)"
-          v-bind:data-tracking-label="item.name"
-          v-bind:href="item.sourceUrl"
-          class="btn btn--cta item-action-button"
-        >
-          Take me to the Project
-        </button>
+        <div class="actions-container">
+          <button
+            v-on:click="goToProject(item)"
+            v-bind:data-tracking-label="item.name"
+            v-bind:href="item.sourceUrl"
+            class="btn btn--cta item-action-button"
+          >Take me to the Project</button>
+        </div>
       </div>
       <div class="right-panel">
         <div class="description-container">
@@ -35,8 +35,7 @@
             v-for="version in item.kenticoVersions"
             v-bind:key="version"
             class="version-caption"
-            >{{ version }}</span
-          >
+          >{{ version }}</span>
         </div>
         <div class="version-container">
           <h3>Version</h3>
@@ -116,7 +115,7 @@ p {
   background-color: $bg-secondary-color;
   width: 100%;
   text-align: left;
-  padding-left: 12px;
+  padding-left: 20px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -151,12 +150,11 @@ p {
 }
 .categories-container {
   text-align: left;
-  padding-left: 12px;
+  padding-left: 20px;
 }
-.item-action-button {
-  margin: 10px 0 10px 0;
+.actions-container {
+  padding: 10px 20px 10px 20px;
 }
-
 .version-caption {
   display: inline-block;
   border-radius: 4px;
