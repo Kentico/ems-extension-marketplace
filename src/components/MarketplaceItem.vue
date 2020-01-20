@@ -36,10 +36,10 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
-import { getPathSegmentFromItemName } from "@/utils/pathSegmentUtils";
-import { MARKETPLACE_ROOT_PATH_SEGMENT } from "@/constants/routes";
-import { trackItemEvent } from "@/utils/analyticsUtils";
-import { TrackingEventType } from "@/models/TrackingEventType";
+import { getPathSegmentFromItemName } from "./..//utils/pathSegmentUtils";
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from "./../constants/routes";
+import { trackItemEvent } from "./../utils/analyticsUtils";
+import { TrackingEventType } from "../models/TrackingEventType";
 
 @Component
 export default class MarketplaceItem extends Vue {

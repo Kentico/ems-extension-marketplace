@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
-import MarketplaceItem from "@/components/MarketplaceItem.vue";
-import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+import MarketplaceItem from "./../components/MarketplaceItem.vue";
+import MarketplaceItemModel from 'src/models/MarketplaceItemModel';
 
 describe("MarketplaceItem.vue", () => {
   it("renders correct containers when passed", () => {

@@ -20,7 +20,7 @@ import store, {
   updateAllItemsMutation,
   updateFilteredItemsMutation,
   addPageAction
-} from "@/store";
+} from "./../store";
 import MarketplaceItemModel from "../models/marketplaceItemModel";
 import { addNextPage } from "../utils/pager";
 import LoadMoreButton from "./LoadMoreButton.vue";

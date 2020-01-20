@@ -53,9 +53,9 @@ import { Component, Vue } from "vue-property-decorator";
 Component.registerHooks(["beforeRouteEnter"]);
 
 import MarketplaceItemModel from "../models/marketplaceItemModel";
-import store, { initializeStoreWithItemsAndNavigateNext } from "@/store";
+import store, { initializeStoreWithItemsAndNavigateNext } from "./../store";
 import { getItem } from "../utils/pathSegmentUtils";
-import { MARKETPLACE_ROOT_PATH_SEGMENT } from "@/constants/routes";
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from "./../constants/routes";
 import { TrackingEventType } from "../models/TrackingEventType";
 import { trackItemEvent } from "../utils/analyticsUtils";
 

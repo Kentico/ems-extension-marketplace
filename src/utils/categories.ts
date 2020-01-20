@@ -1,9 +1,9 @@
-import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+import MarketplaceItemModel from "./../models/MarketplaceItemModel";
 import store, {
   updateCategoriesMutation,
   updateSelectedCategoriesMutation
-} from "@/store";
-import CategoryModel from "@/models/CategoryModel";
+} from "./../store";
+import CategoryModel from "./../models/CategoryModel";
 import performItemsFiltering from "./filter";
 
 export function initStoreWithCategories(allItems: Array<MarketplaceItemModel>) {

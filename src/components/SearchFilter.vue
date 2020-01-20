@@ -17,7 +17,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import store, {
   updateSelectedCategoriesMutation,
   updateFilterSearchPhraseMutation
-} from "@/store";
+} from "./../store";
 import filterItems from "../utils/filter";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";

@@ -1,4 +1,4 @@
-import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+import MarketplaceItemModel from "./../models/MarketplaceItemModel";
 
 export function getPathSegmentFromItemName(itemName: string) {
   const lowerCased = itemName.toLowerCase();

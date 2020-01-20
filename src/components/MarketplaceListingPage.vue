@@ -14,7 +14,7 @@ Component.registerHooks(["beforeRouteEnter"]);
 import MarketplaceItemList from "./MarketplaceItemList.vue";
 import SubmitNewItem from "./SubmitNewItem.vue";
 import MarketplaceFilter from "./MarketplaceFilter.vue";
-import { initializeStoreWithItemsAndNavigateNext } from "@/store";
+import { initializeStoreWithItemsAndNavigateNext } from "./../store";
 
 @Component({
   components: {

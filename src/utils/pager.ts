@@ -1,8 +1,8 @@
 import store, {
   updatePagerLastItemIndexMutation,
   updateItemsToShowMutation
-} from "@/store";
-import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+} from "./../store";
+import MarketplaceItemModel from "./../models/MarketplaceItemModel";
 
 const pageSize: number = 9;
 

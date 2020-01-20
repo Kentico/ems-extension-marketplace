@@ -1,5 +1,5 @@
-import MarketplaceItemModel from "@/models/MarketplaceItemModel";
-import store, { updateTagsCountMutation } from "@/store";
+import MarketplaceItemModel from "./../models/MarketplaceItemModel";
+import store, { updateTagsCountMutation } from "./../store";
 
 export function initStoreWithTags(allItems: Array<MarketplaceItemModel>) {
   let tagsCount = new Map<string, number>();
