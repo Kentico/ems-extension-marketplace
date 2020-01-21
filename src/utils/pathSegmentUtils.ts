@@ -1,18 +1,20 @@
 import MarketplaceItemModel from "./../models/MarketplaceItemModel";
 
 export function getPathSegmentFromItemName(itemName: string) {
-  return encodeURI(itemName);
+  const lowerCasedItemName = itemName.toLocaleLowerCase();
+  return encodeURI(lowerCasedItemName);
 }
 
 export function getItem(
   pathSegmentItemName: string,
   items: MarketplaceItemModel[]
 ): MarketplaceItemModel | null {
-  const itemName = getItemNameFromPathSegment(pathSegmentItemName);
-  const item = items.find(i => i.name === itemName);
+  const itemName = getLoweCasedItemNameFromPathSegment(pathSegmentItemName);
+  const item = items.find(i => i.name.toLocaleLowerCase() === itemName);
   return item ? item : null;
 }
 
-function getItemNameFromPathSegment(pathSegment: string) {
-  return decodeURI(pathSegment);
+function getLoweCasedItemNameFromPathSegment(pathSegment: string) {
+  const lowerCasedPathSegment = pathSegment.toLocaleLowerCase();
+  return decodeURI(lowerCasedPathSegment);
 }
