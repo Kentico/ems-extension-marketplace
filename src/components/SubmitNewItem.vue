@@ -5,11 +5,12 @@
       Submit a new extension without any certification to share it with the
       Kentico community
     </p>
-    <a
+    <button
       href="https://github.com/Kentico/devnet.kentico.com#submit-a-new-kentico-ems-extension-to-devnet"
-      class="btn"
-      >Submit a new item!</a
+      class="btn submit-btn"
     >
+      Submit a new item!
+    </button>
   </div>
 </template>
 
@@ -33,7 +34,6 @@ export default class SubmitNewItem extends Vue {}
   padding: 0 20px;
   color: #696663;
 }
-
 .submit-new-item-section__heading {
   margin-top: 1em;
   font-size: 16px;
@@ -43,5 +43,8 @@ export default class SubmitNewItem extends Vue {}
   font-weight: 700;
   display: inline-block;
   width: 100%;
+}
+.submit-btn {
+  max-width: 620px;
 }
 </style>

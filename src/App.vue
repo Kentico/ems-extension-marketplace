@@ -82,31 +82,20 @@ h2 {
   cursor: pointer;
   user-select: none;
   transition: all 0.15s ease-in-out;
-  width: 71%;
+  width: 100%;
+  box-shadow: 0 3px 0 0 $bg-secondary-color;
 }
-
-.btn--cta {
+.btn:hover {
+  background-color: $btn-bg-color--active;
+  color: white;
+}
+.btn--active {
   background-color: #42388c;
   color: white;
   width: 100%;
+  box-shadow: 0 3px 0 0 #39317a;
 }
-.btn--cta:hover {
-  background-color: #282255;
-}
-.btn:hover {
-  background-color: #282255;
-  color: #fff;
-}
-.btn:focus {
-  outline: none;
-}
-.btn--justified {
-  width: 100%;
-}
-.btn--common {
-  color: $text-primary-color;
-  background-color: $bg-primary-color;
-  border-color: $bg-primary-color;
-  box-shadow: 0 3px 0 0 $bg-secondary-color;
+.btn--active:hover {
+  background-color: $btn-bg-color--active;
 }
 </style>

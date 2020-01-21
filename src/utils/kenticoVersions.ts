@@ -1,5 +1,5 @@
-import MarketplaceItemModel from "./../models/MarketplaceItemModel";
-import store, { updateKenticoVersionsFilterMutation } from "./../store";
+import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+import store, { updateKenticoVersionsFilterMutation } from "@/store";
 
 export const KENTICO_VERSION_ALL_VERSIONS = "All Kentico versions";
 

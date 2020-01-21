@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "rename:demo": "node -e \"require('fs').rename('dist/demo.html', 'dist/index.html', function(err) { if (err) console.log(err); console.log('File demo.html successfully renamed to index.html!') })\"",
-    "build:ci": "vue-cli-service build --target wc --name extension-marketplace && cp public/_redirects dist && npm run rename:demo",
+    "build:ci": "vue-cli-service build --target wc --name extension-marketplace && cpx \"public/_redirects\" \"dist\" && npm run rename:demo",
     "build": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\" && npm run copy:info",
     "watch": "vue-cli-service build --target wc --name extension-marketplace --dest \"C:/DEV/Kentico.com/WebProject/CMS/DevNet/assets/js/src/lib/extension-marketplace\" --watch",
     "lint": "vue-cli-service lint",

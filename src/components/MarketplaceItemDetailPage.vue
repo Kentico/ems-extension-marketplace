@@ -20,8 +20,10 @@
             v-on:click="goToProject(item)"
             v-bind:data-tracking-label="item.name"
             v-bind:href="item.sourceUrl"
-            class="btn btn--cta item-action-button"
-          >Take me to the Project</button>
+            class="btn btn--active item-action-button"
+          >
+            Take me to the project
+          </button>
         </div>
       </div>
       <div class="right-panel">
@@ -35,7 +37,8 @@
             v-for="version in item.kenticoVersions"
             v-bind:key="version"
             class="version-caption"
-          >{{ version }}</span>
+            >{{ version }}</span
+          >
         </div>
         <div class="version-container">
           <h3>Version</h3>
@@ -146,7 +149,7 @@ p {
   margin: 20px 0 10px 0;
 }
 .description-container {
-  margin-top: 20px;
+  margin: 20px 20px 0 0;
 }
 .categories-container {
   text-align: left;

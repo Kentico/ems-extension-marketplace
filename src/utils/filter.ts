@@ -1,7 +1,7 @@
-import store, { updateFilteredItemsMutation } from "./../store";
-import MarketplaceItemModel from "./../models/MarketplaceItemModel";
 import { resetPaging } from "./pager";
 import { KENTICO_VERSION_ALL_VERSIONS } from "./kenticoVersions";
+import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+import store, { updateFilteredItemsMutation } from "@/store";
 
 export default function performItemsFiltering() {
   const allItems: Array<MarketplaceItemModel> = store.state.data.allItems;

@@ -1,6 +1,6 @@
 <template>
   <input
-    class="load-more-button btn btn--common btn--justified"
+    class="load-more-button btn"
     @click="loadMoreItems"
     type="button"
     value="Load More Extensions"
@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { addPageAction } from "./../store";
+import { addPageAction } from "@/store";
 
 @Component({
   components: {}

@@ -134,6 +134,10 @@ p {
   background-color: #42388c;
   color: #fff;
 }
+.marketplace-item-container:hover .btn:hover {
+  background-color: #282255;
+  color: white;
+}
 .marketplace-item-content__action {
   text-decoration: none;
   width: 87%;

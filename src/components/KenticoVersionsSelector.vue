@@ -19,13 +19,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import store, {
-  updateSelectedCategoriesMutation,
-  updateFilterSearchPhraseMutation,
-  updateSelectedKenticoVersionMutation
-} from "./../store";
 import { KENTICO_VERSION_ALL_VERSIONS } from "./../utils/kenticoVersions";
 import performItemsFiltering from "./../utils/filter";
+import store, { updateSelectedKenticoVersionMutation } from "@/store";
 
 @Component({})
 export default class KenticoVersionsSelector extends Vue {
