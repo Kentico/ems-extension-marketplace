@@ -30,7 +30,7 @@
           <p>{{ item.description }}</p>
         </div>
         <div class="kentico-versions-container">
-          <h3>Works with Kentico versions</h3>
+          <h3>Works with versions</h3>
           <span
             v-for="version in item.kenticoVersions"
             v-bind:key="version"
