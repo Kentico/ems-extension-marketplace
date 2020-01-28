@@ -17,7 +17,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 })
 export default class SubmitNewItem extends Vue {
   goToSubmissionPage(): void {
-    window.open("https://github.com/Kentico/devnet.kentico.com#submit-a-new-kentico-ems-extension-to-devnet", "_blank");
+    window.open(
+      "https://github.com/Kentico/devnet.kentico.com#submit-a-new-kentico-ems-extension-to-devnet",
+      "_blank"
+    );
   }
 }
 </script>
