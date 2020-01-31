@@ -5,7 +5,9 @@
       Submit a new extension without any certification to share it with the
       Kentico community
     </p>
-    <button v-on:click="goToSubmissionPage()" class="btn submit-btn">Submit a new item!</button>
+    <button v-on:click="goToSubmissionPage()" class="btn submit-btn">
+      Submit a new item!
+    </button>
   </div>
 </template>
 

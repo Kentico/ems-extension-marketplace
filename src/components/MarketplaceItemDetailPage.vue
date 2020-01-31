@@ -94,9 +94,11 @@ export default class MarketplaceItemDetailPage extends Vue {
     var metaDescriptionElement = document.createElement("meta");
     metaDescriptionElement.setAttribute("name", "description");
     metaDescriptionElement.setAttribute("content", item.description);
-    document.getElementsByTagName("head")[0].appendChild(metaDescriptionElement);
+    document
+      .getElementsByTagName("head")[0]
+      .appendChild(metaDescriptionElement);
 
-    const metaRobotsElement = document.querySelector("[name='robots']")
+    const metaRobotsElement = document.querySelector("[name='robots']");
     if (document.contains(metaRobotsElement)) {
       metaRobotsElement!.remove();
     }
