@@ -70,12 +70,7 @@ export default class MarketplaceItemDetailPage extends Vue {
     const pathSegmentItemName = this.$route.params.itemName;
     const allItems = this.$store.getters.allItems as MarketplaceItemModel[];
 
-    const renderedItem = this.item!;
-    document.title = renderedItem.name;
-    var metaElement = document.createElement("meta");
-    metaElement.setAttribute("name", "description");
-    metaElement.setAttribute("content", renderedItem.description);
-    document.getElementsByTagName("head")[0].appendChild(metaElement);
+    this.setMetaTags(this.item!);
 
     // cannot find item related to path segment
     if (getItem(pathSegmentItemName, allItems) === null) {
@@ -92,6 +87,19 @@ export default class MarketplaceItemDetailPage extends Vue {
   goToProject(item: MarketplaceItemModel): void {
     trackItemEvent(TrackingEventType.NavigateToExtensionProject, item);
     window.open(item.sourceUrl, "_blank");
+  }
+
+  setMetaTags(item: MarketplaceItemModel) {
+    document.title = item.name;
+    var metaDescriptionElement = document.createElement("meta");
+    metaDescriptionElement.setAttribute("name", "description");
+    metaDescriptionElement.setAttribute("content", item.description);
+    document.getElementsByTagName("head")[0].appendChild(metaDescriptionElement);
+
+    const metaRobotsElement = document.querySelector("[name='robots']")
+    if (document.contains(metaRobotsElement)) {
+      metaRobotsElement!.remove();
+    }
   }
 }
 </script>
