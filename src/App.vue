@@ -15,6 +15,7 @@ import SubmitNewItem from "./components/SubmitNewItem.vue";
 import MarketplaceFilter from "./components/MarketplaceFilter.vue";
 import { initItemsStateAction, initStore } from "./store";
 import MarketplaceItemModel from "./models/marketplaceItemModel";
+import { shuffle } from "./utils/shuffle";
 import store from "./store";
 
 @Component({
@@ -34,10 +35,7 @@ export default class App extends Vue {
     ).then(response => {
       return response.json().then(json => {
         const allItems = json as MarketplaceItemModel[];
-        allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
-          a.name.localeCompare(b.name)
-        );
-        initStore(allItems);
+        initStore(shuffle(allItems));
       });
     });
   }
