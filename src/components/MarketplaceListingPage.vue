@@ -27,5 +27,16 @@ export default class MarketplaceListingPage extends Vue {
   beforeRouteEnter(to: any, from: any, next: any) {
     initializeStoreWithItemsAndNavigateNext(next);
   }
+
+  beforeMount() {
+    this.setMetaTags();
+  }
+
+  setMetaTags() {
+    const metaRobotsElement = document.createElement("meta");
+    metaRobotsElement.setAttribute("name", "robots");
+    metaRobotsElement.setAttribute("content", "noindex");
+    document.getElementsByTagName("head")[0].appendChild(metaRobotsElement);
+  }
 }
 </script>
