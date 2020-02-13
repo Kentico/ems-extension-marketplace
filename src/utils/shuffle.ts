@@ -1,4 +1,4 @@
-import MarketplaceItemModel from "@/models/marketplaceItemModel";
+import MarketplaceItemModel from "./../models/MarketplaceItemModel";
 
 /**
  * Shuffles marketplace items using Fisher-Yates algorithm.

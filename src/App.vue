@@ -1,45 +1,49 @@
 <template>
   <div id="app">
     <div class="marketplace">
-      <MarketplaceFilter />
-      <MarketplaceItemList />
-      <SubmitNewItem />
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
+Component.registerHooks(["beforeRouteEnter"]);
+
+import { initItemsStateAction, initStore } from "./store";
+import MarketplaceItemModel from "./models/MarketplaceItemModel";
 import MarketplaceItemList from "./components/MarketplaceItemList.vue";
 import SubmitNewItem from "./components/SubmitNewItem.vue";
 import MarketplaceFilter from "./components/MarketplaceFilter.vue";
-import { initItemsStateAction, initStore } from "./store";
-import MarketplaceItemModel from "./models/marketplaceItemModel";
-import { shuffle } from "./utils/shuffle";
 import store from "./store";
+import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
+import Vuex from "vuex";
+import VueRouter from "vue-router";
+import MarketplaceItemDetailPage from "./components/MarketplaceItemDetailPage.vue";
+import { MARKETPLACE_ROOT_PATH_SEGMENT } from "./constants/routes";
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+  mode: "history",
+  routes: [
+    {
+      path: MARKETPLACE_ROOT_PATH_SEGMENT,
+      component: MarketplaceListingPage
+    },
+    {
+      path: `${MARKETPLACE_ROOT_PATH_SEGMENT}/:itemName`,
+      component: MarketplaceItemDetailPage
+    }
+  ]
+});
 
 @Component({
   store,
-  components: {
-    MarketplaceItemList,
-    MarketplaceFilter,
-    SubmitNewItem
-  }
+  router
 })
-export default class App extends Vue {
-  beforeMount() {
-    fetch(
-      "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
-        "?t=" +
-        new Date().valueOf()
-    ).then(response => {
-      return response.json().then(json => {
-        const allItems = json as MarketplaceItemModel[];
-        initStore(shuffle(allItems));
-      });
-    });
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style scoped lang="scss">
@@ -49,6 +53,12 @@ export default class App extends Vue {
 </style>
 
 <style lang="scss">
+@import "./styles/variables.scss";
+
+h2 {
+  font-size: 30px;
+  line-height: 1.3;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -67,30 +77,28 @@ export default class App extends Vue {
   border-radius: 4px;
   user-select: none;
   text-decoration: none;
-  color: #262524;
-  background-color: #d6d6d6;
+  color: $text-primary-color;
+  background-color: $bg-secondary-color;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
   transition: all 0.15s ease-in-out;
-  width: 71%;
+  width: 100%;
+  box-shadow: 0 3px 0 0 $bg-secondary-color;
 }
 .btn:hover {
+  background-color: $btn-bg-color--active;
+  color: white;
+}
+.btn--active {
   background-color: #42388c;
-  color: #fff;
-}
-.btn:focus {
-  outline: none;
-}
-.btn--justified {
+  color: white;
   width: 100%;
+  box-shadow: 0 3px 0 0 #39317a;
 }
-.btn--common {
-  color: #262524;
-  background-color: #e3e3e3;
-  border-color: #e3e3e3;
-  box-shadow: 0 3px 0 0 #d6d6d6;
+.btn--active:hover {
+  background-color: $btn-bg-color--active;
 }
 </style>

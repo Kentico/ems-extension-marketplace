@@ -5,11 +5,9 @@
       Submit a new extension without any certification to share it with the
       Kentico community
     </p>
-    <a
-      href="https://github.com/Kentico/devnet.kentico.com#submit-a-new-kentico-ems-extension-to-devnet"
-      class="btn"
-      >Submit a new item!</a
-    >
+    <button v-on:click="goToSubmissionPage()" class="btn submit-btn">
+      Submit a new item!
+    </button>
   </div>
 </template>
 
@@ -19,17 +17,25 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({
   components: {}
 })
-export default class SubmitNewItem extends Vue {}
+export default class SubmitNewItem extends Vue {
+  goToSubmissionPage(): void {
+    window.open(
+      "https://github.com/Kentico/devnet.kentico.com#submit-a-new-kentico-ems-extension-to-devnet",
+      "_blank"
+    );
+  }
+}
 </script>
 
 <style scoped lang="scss">
+@import "../styles/variables.scss";
+
 .submit-new-item-section {
   min-height: 165px;
   width: 100%;
   box-sizing: border-box;
   border-radius: 4px;
   padding: 0 20px;
-  background-color: #e3e3e3;
   color: #696663;
 }
 .submit-new-item-section__heading {
@@ -41,5 +47,8 @@ export default class SubmitNewItem extends Vue {}
   font-weight: 700;
   display: inline-block;
   width: 100%;
+}
+.submit-btn {
+  max-width: 620px;
 }
 </style>

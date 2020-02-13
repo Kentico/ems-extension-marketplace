@@ -2,11 +2,11 @@
   <div>
     <div id="marketplace-item-list" class="marketplace-item-list">
       <div
-        class="marketplace-item-detail-container"
+        class="marketplace-item-container"
         v-for="(item, index) in itemsToShow"
         v-bind:key="`item.name-${index}`"
       >
-        <MarketplaceItemDetail v-bind:item="item" />
+        <MarketplaceItem v-bind:item="item" />
       </div>
     </div>
     <LoadMoreButton v-if="isShowMoreButtonVisible" />
@@ -15,19 +15,19 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import MarketplaceItemDetail from "./MarketplaceItemDetail.vue";
+import MarketplaceItem from "./MarketplaceItem.vue";
 import store, {
   updateAllItemsMutation,
   updateFilteredItemsMutation,
   addPageAction
-} from "@/store";
-import MarketplaceItemModel from "../models/marketplaceItemModel";
+} from "./../store";
+import MarketplaceItemModel from "../models/MarketplaceItemModel";
 import { addNextPage } from "../utils/pager";
 import LoadMoreButton from "./LoadMoreButton.vue";
 
 @Component({
   components: {
-    MarketplaceItemDetail,
+    MarketplaceItem,
     LoadMoreButton
   }
 })
@@ -47,7 +47,8 @@ export default class MarketplaceItemList extends Vue {
   justify-content: flex-start;
   flex-flow: row wrap;
 }
-.marketplace-item-detail-container {
+
+.marketplace-item-container {
   max-width: 290px;
   margin: 0 10px 18px 0;
 }

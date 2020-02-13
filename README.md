@@ -24,6 +24,7 @@ This repository is a source of the [Kentico EMS extension marketplace](https://d
   ```sh
   npm run serve
   ```
+ * Go to http://appRunningUrl/marketplace
 
 ### *[Internal]* Develop on local [devnet.localkentico.com](https://devnet.localkentico.com) instance
 

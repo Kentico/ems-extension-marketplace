@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import MarketplaceItemModel from "./models/marketplaceItemModel";
+import MarketplaceItemModel from "./models/MarketplaceItemModel";
 import performItemsFiltering from "./utils/filter";
 import { resetPaging, addNextPage } from "./utils/pager";
 import CategoryModel from "./models/CategoryModel";
@@ -11,6 +11,7 @@ import {
   initStoreWithKenticoVersions,
   KENTICO_VERSION_ALL_VERSIONS
 } from "./utils/kenticoVersions";
+import { shuffle } from './utils/shuffle';
 
 export const updateAllItemsMutation = "updateAllItems";
 export const updateFilteredItemsMutation = "updateFilteredItems";
@@ -36,6 +37,23 @@ export const updateSearchPhraseAction = "updateFilterPassphrase";
 export const updateSelectedCategoriesAction = "updateSelectedCategories";
 
 Vue.use(Vuex);
+
+export async function initializeStoreWithItemsAndNavigateNext(next: any) {
+  await fetch(
+    "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
+      "?t=" +
+      new Date().valueOf()
+  ).then(async response => {
+    return response.json().then(json => {
+      const allItems = json as MarketplaceItemModel[];
+      allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
+        a.name.localeCompare(b.name)
+      );
+      initStore(shuffle(allItems));
+      next();
+    });
+  });
+}
 
 export function initStore(allItems: Array<MarketplaceItemModel>) {
   initStoreWithItems(allItems);

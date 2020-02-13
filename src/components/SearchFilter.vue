@@ -17,7 +17,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import store, {
   updateSelectedCategoriesMutation,
   updateFilterSearchPhraseMutation
-} from "@/store";
+} from "./../store";
 import filterItems from "../utils/filter";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -51,6 +51,8 @@ export default class SearchFilter extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "../styles/variables.scss";
+
 .search-filter {
   height: 40px;
   display: block;
@@ -58,6 +60,7 @@ export default class SearchFilter extends Vue {
   width: 286px;
   margin: 4px 10px 4px 0;
 }
+
 .search-filter__input {
   float: left;
   border: none;
@@ -67,7 +70,7 @@ export default class SearchFilter extends Vue {
   font-size: 14px;
   width: 246px;
   height: 40px;
-  color: #262524;
+  color: $text-primary-color;
   vertical-align: middle;
   background-color: #fff;
   padding: 7px 10px;

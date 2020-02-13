@@ -1,6 +1,6 @@
 <template>
   <input
-    class="load-more-button btn btn--common btn--justified"
+    class="load-more-button btn"
     @click="loadMoreItems"
     type="button"
     value="Load More Extensions"

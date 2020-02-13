@@ -1,10 +1,10 @@
-import MarketplaceItemModel from "@/models/marketplaceItemModel";
+import performItemsFiltering from "./filter";
+import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+import CategoryModel from "@/models/CategoryModel";
 import store, {
   updateCategoriesMutation,
   updateSelectedCategoriesMutation
 } from "@/store";
-import CategoryModel from "@/models/CategoryModel";
-import performItemsFiltering from "./filter";
 
 export function initStoreWithCategories(allItems: Array<MarketplaceItemModel>) {
   let categoriesCountMap = new Map<string, CategoryModel>();

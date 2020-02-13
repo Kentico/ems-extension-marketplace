@@ -1,4 +1,5 @@
-import MarketplaceItemModel from "@/models/marketplaceItemModel";
+import MarketplaceItemModel from "@/models/MarketplaceItemModel";
+
 import store, { initItemsStateAction } from "@/store";
 
 export function initStoreWithItems(allItems: Array<MarketplaceItemModel>) {

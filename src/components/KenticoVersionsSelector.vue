@@ -19,13 +19,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import store, {
-  updateSelectedCategoriesMutation,
-  updateFilterSearchPhraseMutation,
-  updateSelectedKenticoVersionMutation
-} from "@/store";
-import { KENTICO_VERSION_ALL_VERSIONS } from "@/utils/kenticoVersions";
-import performItemsFiltering from "@/utils/filter";
+import { KENTICO_VERSION_ALL_VERSIONS } from "./../utils/kenticoVersions";
+import performItemsFiltering from "./../utils/filter";
+import store, { updateSelectedKenticoVersionMutation } from "@/store";
 
 @Component({})
 export default class KenticoVersionsSelector extends Vue {
@@ -85,6 +81,7 @@ Vue.directive("click-outside", {
   margin: 4px 10px 4px 0;
   cursor: pointer;
 }
+
 .selected {
   position: relative;
   display: flex;
