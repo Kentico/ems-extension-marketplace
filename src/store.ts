@@ -11,6 +11,7 @@ import {
   initStoreWithKenticoVersions,
   KENTICO_VERSION_ALL_VERSIONS
 } from "./utils/kenticoVersions";
+import { shuffle } from './utils/shuffle';
 
 export const updateAllItemsMutation = "updateAllItems";
 export const updateFilteredItemsMutation = "updateFilteredItems";
@@ -48,7 +49,7 @@ export async function initializeStoreWithItemsAndNavigateNext(next: any) {
       allItems.sort((a: MarketplaceItemModel, b: MarketplaceItemModel) =>
         a.name.localeCompare(b.name)
       );
-      initStore(allItems);
+      initStore(shuffle(allItems));
       next();
     });
   });

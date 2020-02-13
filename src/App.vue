@@ -11,12 +11,11 @@ import { Component, Vue } from "vue-property-decorator";
 
 Component.registerHooks(["beforeRouteEnter"]);
 
-import { initItemsStateAction } from "./store";
+import { initItemsStateAction, initStore } from "./store";
 import MarketplaceItemModel from "./models/MarketplaceItemModel";
 import MarketplaceItemList from "./components/MarketplaceItemList.vue";
 import SubmitNewItem from "./components/SubmitNewItem.vue";
 import MarketplaceFilter from "./components/MarketplaceFilter.vue";
-import { shuffle } from "./utils/shuffle";
 import store from "./store";
 import MarketplaceListingPage from "./components/MarketplaceListingPage.vue";
 import Vuex from "vuex";
@@ -44,22 +43,7 @@ const router = new VueRouter({
   store,
   router
 })
-
-export default class App extends Vue {
-  beforeMount() {
-    fetch(
-      "https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/extensions.json" +
-        "?t=" +
-        new Date().valueOf()
-    ).then(response => {
-      return response.json().then(json => {
-        const allItems = json as MarketplaceItemModel[];
-        initStore(shuffle(allItems));
-      });
-    });
-  }
-}
-
+export default class App extends Vue {}
 </script>
 
 <style scoped lang="scss">
