@@ -20,6 +20,17 @@ export function initStoreWithCategories(allItems: Array<MarketplaceItemModel>) {
         } as CategoryModel);
   });
   const categoriesCountArray = Array.from(categoriesCountMap.values());
+
+  categoriesCountArray.sort((a, b) =>
+    b.count > a.count
+      ? 1
+      : a.count === b.count
+      ? a.name > b.name
+        ? 1
+        : -1
+      : -1
+  );
+
   store.commit(updateCategoriesMutation, categoriesCountArray);
 }
 
