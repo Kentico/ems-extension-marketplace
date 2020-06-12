@@ -91,7 +91,7 @@ function applyOrderFilter(
 ) {
   var items = itemsToFilter;
   switch(selectedOrderFilter) {
-    case "Random":
+    case "Random sort":
       return itemsToFilter;
     case "A-Z":
       return items.slice().sort((a,b) => a.name > b.name ? 1 : -1);

@@ -82,7 +82,7 @@ export default new Vuex.Store({
       searchPhrase: "",
       selectedCategories: new Array<string>(),
       selectedKenticoVersion: KENTICO_VERSION_ALL_VERSIONS,
-      selectedOrder: "Random"
+      selectedOrder: "Random sort"
     },
     pager: {
       lastItemIndex: 0
