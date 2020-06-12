@@ -78,3 +78,5 @@ function doesItemSupportKenticoVersion(
   );
   return foundVersions && foundVersions.length > 0;
 }
+
+

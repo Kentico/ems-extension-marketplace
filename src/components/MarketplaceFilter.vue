@@ -2,6 +2,7 @@
   <div class="marketplace-filter">
     <SearchFilter />
     <KenticoVersionsSelector />
+    <OrderFilter />
     <CategoriesFilter />
   </div>
 </template>
@@ -11,6 +12,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import CategoriesFilter from "./CategoriesFilter.vue";
 import SearchFilter from "./SearchFilter.vue";
 import KenticoVersionsSelector from "./KenticoVersionsSelector.vue";
+import OrderFilter from "./OrderFilter.vue";
 import {
   updateSearchPhraseAction,
   updateSelectedCategoriesAction
@@ -21,7 +23,8 @@ import filterItems from "../utils/filter";
   components: {
     SearchFilter,
     CategoriesFilter,
-    KenticoVersionsSelector
+    KenticoVersionsSelector,
+    OrderFilter
   }
 })
 export default class MarketplaceFilter extends Vue {
