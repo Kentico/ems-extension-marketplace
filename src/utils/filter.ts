@@ -2,14 +2,13 @@ import { resetPaging } from "./pager";
 import { KENTICO_VERSION_ALL_VERSIONS } from "./kenticoVersions";
 import MarketplaceItemModel from "@/models/MarketplaceItemModel";
 import store, { updateFilteredItemsMutation } from "@/store";
-import { shuffle } from "./shuffle";
 
 export default function performItemsFiltering() {
   const allItems: Array<MarketplaceItemModel> = store.state.data.allItems;
   const searchPhrase = store.state.filter.searchPhrase;
   const selectedCategories = store.state.filter.selectedCategories;
   const selectedKenticoVersion = store.state.filter.selectedKenticoVersion;
-  const selectedOrderFilter = store.state.filter.selectedOrder;
+  const selectedOrderingFilter = store.state.filter.selectedOrdering;
 
   const searchFilteredItems = applySearchFilter(allItems, searchPhrase);
   const categoryFilteredItems = applyCategoriesFilter(
@@ -22,8 +21,8 @@ export default function performItemsFiltering() {
   );
   const orderedItems = applyOrderFilter(
     itemsFilteredByKenticoVersion,
-    selectedOrderFilter
-  )
+    selectedOrderingFilter
+  );
 
   store.commit(updateFilteredItemsMutation, orderedItems);
   resetPaging();
@@ -89,14 +88,14 @@ function applyOrderFilter(
   itemsToFilter: Array<MarketplaceItemModel>,
   selectedOrderFilter: string
 ) {
-  var items = itemsToFilter;
-  switch(selectedOrderFilter) {
+  const items = itemsToFilter;
+  switch (selectedOrderFilter) {
     case "Random sort":
       return itemsToFilter;
-    case "A-Z":
-      return items.slice().sort((a,b) => a.name > b.name ? 1 : -1);
-    case "Z-A":
-      return items.slice().sort((a,b) => b.name > a.name ? 1 : -1);
+    case "A - Z":
+      return items.slice().sort((a, b) => a.name > b.name ? 1 : -1);
+    case "Z - A":
+      return items.slice().sort((a, b) => b.name > a.name ? 1 : -1);
   }
 }
 

@@ -1,17 +1,17 @@
 <template>
   <div class="order-filter">
     <div class="selected" @click="toggle">
-      <span class="selected--title">{{ selectedOrder }}</span>
+      <span class="selected--title">{{ selectedOrdering }}</span>
       <span class="dropdown-icon">▼</span>
     </div>
     <div class="options" v-show="isOpen">
       <div
-      class="option"
-      v-bind:key="orderFilter"
-      v-for="orderFilter in orderFilters"
-      @click="onOrderFilterClick(orderFilter)"
+        class="option"
+        v-bind:key="orderingFilter"
+        v-for="orderingFilter in orderingFilters"
+        @click="onOrderingFilterClick(orderingFilter)"
       >
-        {{ orderFilter }}
+        {{ orderingFilter }}
       </div>
     </div>
   </div>
@@ -20,19 +20,19 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import performItemsFiltering from "./../utils/filter";
-import store, { updateSelectedOrderMutation } from "@/store";
+import store, { updateSelectedOrderingMutation } from "@/store";
 
 @Component({})
 export default class OrderFilter extends Vue {
 
   private isOpen = false;
 
-  get orderFilters() {
-    return store.getters.orderFilters;
+  get orderingFilters() {
+    return store.getters.orderingFilters;
   }
 
-  get selectedOrder() {
-    return store.getters.selectedOrder;
+  get selectedOrdering() {
+    return store.getters.selectedOrdering;
   }
 
   toggle() {
@@ -47,8 +47,8 @@ export default class OrderFilter extends Vue {
     this.isOpen = false;
   }
 
-  onOrderFilterClick(orderFilter: string) {
-    this.$store.commit(updateSelectedOrderMutation, orderFilter);
+  onOrderingFilterClick(orderingFilter: string) {
+    this.$store.commit(updateSelectedOrderingMutation, orderingFilter);
     this.hide();
     performItemsFiltering();
   }

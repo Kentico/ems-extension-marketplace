@@ -7,7 +7,7 @@ import CategoryModel from "./models/CategoryModel";
 import { initStoreWithItems } from "./utils/items";
 import { initStoreWithTags } from "./utils/tags";
 import { initStoreWithCategories } from "./utils/categories";
-import { initStoreWithOrders } from "./utils/order";
+import { initStoreWithOrderings } from "./utils/ordering";
 import {
   initStoreWithKenticoVersions,
   KENTICO_VERSION_ALL_VERSIONS
@@ -21,7 +21,7 @@ export const updateTagsCountMutation = "updateTagsCount";
 export const updateKenticoVersionsFilterMutation =
   "updateKenticoVersionsFilter";
 export const updateCategoriesMutation = "updateCategories";
-export const updateOrderFilterMutation = "updateOrderFilter";
+export const updateOrderingFilterMutation = "updateOrderingFilter";
 export const updateFilterSearchPhraseMutation = "updateFilterSearchPhrase";
 
 export const updateSelectedCategoriesMutation = "updateSelectedCategories";
@@ -29,7 +29,7 @@ export const updateSelectedKenticoVersionMutation =
   "updateSelectedKenticoVersion";
 export const toggleCategoryInSelectedCategoriesMutation =
   "toggleCategoryInSelectedCategories";
-  export const updateSelectedOrderMutation = "updateSelectedOrder";
+  export const updateSelectedOrderingMutation = "updateSelectedOrdering";
   
 export const addNextPageInPagerListingMutation = "addNextPageInPagerListing";
 export const updatePagerLastItemIndexMutation = "updatePagerLastItemIndex";
@@ -38,7 +38,6 @@ export const initItemsStateAction = "initItemsState";
 export const addPageAction = "addPage";
 export const updateSearchPhraseAction = "updateFilterPassphrase";
 export const updateSelectedCategoriesAction = "updateSelectedCategories";
-
 
 Vue.use(Vuex);
 
@@ -64,7 +63,7 @@ export function initStore(allItems: Array<MarketplaceItemModel>) {
   initStoreWithTags(allItems);
   initStoreWithCategories(allItems);
   initStoreWithKenticoVersions(allItems);
-  initStoreWithOrders();
+  initStoreWithOrderings();
 }
 
 export default new Vuex.Store({
@@ -76,13 +75,13 @@ export default new Vuex.Store({
       tagsCount: new Map<string, number>(),
       categories: new Array<CategoryModel>(),
       kenticoVersions: new Array<string>(),
-      order: new Array<string>()
+      ordering: new Array<string>()
     },
     filter: {
       searchPhrase: "",
       selectedCategories: new Array<string>(),
       selectedKenticoVersion: KENTICO_VERSION_ALL_VERSIONS,
-      selectedOrder: "Random sort"
+      selectedOrdering: "Random sort"
     },
     pager: {
       lastItemIndex: 0
@@ -113,14 +112,14 @@ export default new Vuex.Store({
     updateSelectedKenticoVersion(state, selectedKenticoVersion: string) {
       state.filter.selectedKenticoVersion = selectedKenticoVersion;
     },
-    updateSelectedOrder(state, selectedOrder: string) {
-      state.filter.selectedOrder = selectedOrder;
+    updateSelectedOrdering(state, selectedOrdering: string) {
+      state.filter.selectedOrdering = selectedOrdering;
     },
     updateKenticoVersionsFilter(state, kenticoVersions: Array<string>) {
       state.data.kenticoVersions = kenticoVersions;
     },
-    updateOrderFilter(state, orderFilters: Array<string>) {
-      state.data.order = orderFilters;
+    updateOrderingFilter(state, orderingFilters: Array<string>) {
+      state.data.ordering = orderingFilters;
     },
     updatePagerLastItemIndex(state, lastItemIndex) {
       state.pager.lastItemIndex = lastItemIndex;
@@ -133,11 +132,11 @@ export default new Vuex.Store({
     tagsCount: state => state.data.tagsCount,
     categories: state => state.data.categories,
     kenticoVersions: state => state.data.kenticoVersions,
-    orderFilters: state => state.data.order,
+    orderingFilters: state => state.data.ordering,
     filterSearchphrase: state => state.filter.searchPhrase,
     selectedCategories: state => state.filter.selectedCategories,
     selectedKenticoVersion: state => state.filter.selectedKenticoVersion,
-    selectedOrder: state => state.filter.selectedOrder,
+    selectedOrdering: state => state.filter.selectedOrdering,
     pagerLastItemIndex: state => state.pager.lastItemIndex
   },
   actions: {
