@@ -8,6 +8,7 @@ export default function performItemsFiltering() {
   const searchPhrase = store.state.filter.searchPhrase;
   const selectedCategories = store.state.filter.selectedCategories;
   const selectedKenticoVersion = store.state.filter.selectedKenticoVersion;
+  const selectedOrderingFilter = store.state.filter.selectedOrdering;
 
   const searchFilteredItems = applySearchFilter(allItems, searchPhrase);
   const categoryFilteredItems = applyCategoriesFilter(
@@ -18,8 +19,12 @@ export default function performItemsFiltering() {
     categoryFilteredItems,
     selectedKenticoVersion
   );
+  const orderedItems = applyOrderFilter(
+    itemsFilteredByKenticoVersion,
+    selectedOrderingFilter
+  );
 
-  store.commit(updateFilteredItemsMutation, itemsFilteredByKenticoVersion);
+  store.commit(updateFilteredItemsMutation, orderedItems);
   resetPaging();
 }
 
@@ -78,3 +83,20 @@ function doesItemSupportKenticoVersion(
   );
   return foundVersions && foundVersions.length > 0;
 }
+
+function applyOrderFilter(
+  itemsToFilter: Array<MarketplaceItemModel>,
+  selectedOrderFilter: string
+) {
+  const items = itemsToFilter;
+  switch (selectedOrderFilter) {
+    case "Random sort":
+      return itemsToFilter;
+    case "A - Z":
+      return items.slice().sort((a, b) => a.name > b.name ? 1 : -1);
+    case "Z - A":
+      return items.slice().sort((a, b) => b.name > a.name ? 1 : -1);
+  }
+}
+
+
