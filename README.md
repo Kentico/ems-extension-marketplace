@@ -53,4 +53,3 @@ This repository is a source of the [Kentico EMS extension marketplace](https://d
   * Commit marketplace source code to this repository.
   * Commit bundled file `extension-marketplace.min.js` located on the `--dest` build script parameter location to the [kentico.com](kentico.com) source code and propagate it to the production environment.
 
-![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/ems-extension-marketplace?pixel)
