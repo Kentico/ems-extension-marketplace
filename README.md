@@ -1,6 +1,6 @@
 # Kentico EMS Extension Marketplace
 
-[![Build Status](https://api.travis-ci.com/Kentico/ems-extension-marketplace.svg?branch=master)](https://travis-ci.com/Kentico/ems-extension-marketplace)
+[![Build](https://github.com/Kentico/ems-extension-marketplace/actions/workflows/test.yml/badge.svg)](https://github.com/Kentico/ems-extension-marketplace/actions/workflows/test.yml)
 [![Live](https://img.shields.io/badge/Live-brightgreen.svg)](https://devnet.kentico.com/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/54b3d5094d76ef66d0b4/maintainability)](https://codeclimate.com/github/Kentico/ems-extension-marketplace/maintainability)
 
